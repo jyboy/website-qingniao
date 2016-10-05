@@ -1,2 +1,7 @@
 # qingniao.tech
-qingniao studio website (http://qingniao.tech)
+
+qingniao studio website: [qingniao.tech](http://qingniao.tech)
+
+## License ##
+
+[MIT license](https://github.com/jyboy/qingniao.tech/blob/master/LICENSE)

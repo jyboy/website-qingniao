@@ -1,0 +1,139 @@
+html {
+  min-height: 100%; }
+  html body {
+    min-height: 100%; }
+    html body .header {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      border-bottom: 1px solid #e1e1e1;
+      background-color: white;
+      display: flex;
+      justify-content: center; }
+      html body .header .header-panel {
+        width: calc(100% - 80px);
+        height: 100%;
+        display: flex;
+        justify-content: flex-end; }
+        html body .header .header-panel .header-list {
+          list-style: none;
+          height: 100%;
+          margin-bottom: 0;
+          display: flex;
+          -webkit-padding-start: 0; }
+          html body .header .header-panel .header-list li {
+            width: 80px;
+            height: 100%; }
+            html body .header .header-panel .header-list li a {
+              width: 80px;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 16px;
+              color: #333; }
+              html body .header .header-panel .header-list li a:hover {
+                color: #337ab7;
+                text-decoration: none;
+                background-color: #f5f5f5;
+                color: #00aff0;
+                cursor: pointer; }
+              html body .header .header-panel .header-list li a:focus {
+                text-decoration: none; }
+          html body .header .header-panel .header-list .active {
+            border-bottom: 2px solid #00aff0; }
+    html body .content {
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      html body .content .content-wrap {
+        width: 600px; }
+        html body .content .content-wrap .god {
+          margin-top: 60px;
+          margin-bottom: 40px; }
+          html body .content .content-wrap .god .god-wrap .god-title {
+            display: flex;
+            justify-content: center; }
+            html body .content .content-wrap .god .god-wrap .god-title p {
+              font-size: 28px; }
+          html body .content .content-wrap .god .god-wrap .god-table {
+            margin-top: 10px; }
+            html body .content .content-wrap .god .god-wrap .god-table thead tr {
+              height: 35px;
+              line-height: 35px; }
+              html body .content .content-wrap .god .god-wrap .god-table thead tr th {
+                background: #efefef;
+                border: 1px solid #e5e5e5;
+                vertical-align: middle;
+                text-align: center;
+                width: 75px; }
+              html body .content .content-wrap .god .god-wrap .god-table thead tr .col5 {
+                width: 300px; }
+            html body .content .content-wrap .god .god-wrap .god-table tbody tr {
+              height: 35px;
+              line-height: 35px; }
+              html body .content .content-wrap .god .god-wrap .god-table tbody tr td {
+                border: 1px solid #e5e5e5;
+                vertical-align: middle;
+                text-align: center;
+                width: 75px; }
+              html body .content .content-wrap .god .god-wrap .god-table tbody tr .col5td {
+                width: 300px; }
+                html body .content .content-wrap .god .god-wrap .god-table tbody tr .col5td div .tooltip-inner {
+                  max-width: none; }
+    html body .footer {
+      left: 0;
+      top: 1445px;
+      width: 100%;
+      height: 40px;
+      border-top: 1px solid #e1e1e1;
+      background-color: white; }
+      html body .footer .footer-panel {
+        height: 100%;
+        display: flex;
+        justify-content: center; }
+        html body .footer .footer-panel .footer-image {
+          display: flex;
+          align-items: center; }
+          html body .footer .footer-panel .footer-image img {
+            width: 32px;
+            height: 32px; }
+        html body .footer .footer-panel .copyright {
+          margin-left: 10px;
+          display: flex;
+          align-items: center; }
+          html body .footer .footer-panel .copyright span {
+            color: #666; }
+
+@media (min-width: 768px) {
+  html {
+    height: 1485px; }
+    html body {
+      height: 1485px;
+      position: relative; }
+      html body .pg-canvas {
+        width: 100%; }
+      html body .header, html body .content, html body .footer {
+        position: absolute; }
+      html body .content .content-wrap .god .god-wrap .god-table tbody tr .col5td div {
+        display: flex;
+        justify-content: center; }
+        html body .content .content-wrap .god .god-wrap .god-table tbody tr .col5td div .col5span {
+          display: inline-block;
+          max-width: 280px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; } }
+@media (max-width: 768px) {
+  html body .header .header-panel {
+    justify-content: center; }
+  html body .content .content-wrap .god {
+    margin: 20px 10px;
+    font-size: 12px; } }
+
+/*# sourceMappingURL=godconsole.css.map */

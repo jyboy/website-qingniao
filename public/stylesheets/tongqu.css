@@ -1,0 +1,257 @@
+html {
+  min-height: 100%; }
+  html body {
+    min-height: 100%; }
+    html body .header {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      border-bottom: 1px solid #e1e1e1;
+      background-color: white;
+      display: flex;
+      justify-content: center; }
+      html body .header .header-panel {
+        width: calc(100% - 80px);
+        height: 100%;
+        display: flex;
+        justify-content: flex-end; }
+        html body .header .header-panel .header-list {
+          list-style: none;
+          height: 100%;
+          margin-bottom: 0;
+          display: flex;
+          -webkit-padding-start: 0; }
+          html body .header .header-panel .header-list li {
+            width: 80px;
+            height: 100%; }
+            html body .header .header-panel .header-list li a {
+              width: 80px;
+              height: 100%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 16px;
+              color: #333; }
+              html body .header .header-panel .header-list li a:hover {
+                color: #337ab7;
+                text-decoration: none;
+                background-color: #f5f5f5;
+                color: #00aff0;
+                cursor: pointer; }
+              html body .header .header-panel .header-list li a:focus {
+                text-decoration: none; }
+          html body .header .header-panel .header-list .active {
+            border-bottom: 2px solid #00aff0; }
+    html body .content {
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      html body .content .content-wrap {
+        width: 600px; }
+        html body .content .content-wrap .tongqu {
+          display: flex;
+          justify-content: center;
+          margin-top: 30px; }
+          html body .content .content-wrap .tongqu span {
+            font-size: 40px; }
+        html body .content .content-wrap .slogan {
+          display: flex;
+          justify-content: center;
+          margin-top: 20px; }
+          html body .content .content-wrap .slogan span {
+            font-size: 20px;
+            color: #00aff0;
+            display: inline-block;
+            border: 2px solid #00aff0;
+            padding: 5px 10px; }
+        html body .content .content-wrap .description {
+          border: 1px solid #e1e1e1;
+          border-radius: 3px;
+          margin-top: 20px;
+          padding-top: 12px; }
+          html body .content .content-wrap .description p {
+            text-align: center;
+            color: #666; }
+          html body .content .content-wrap .description .line-panel {
+            display: flex;
+            justify-content: center; }
+            html body .content .content-wrap .description .line-panel .line {
+              height: 1px;
+              width: 90%;
+              background-color: #e1e1e1; }
+        html body .content .content-wrap .free-trial {
+          margin-top: 20px;
+          display: flex;
+          justify-content: center; }
+          html body .content .content-wrap .free-trial a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            width: 140px;
+            height: 34px;
+            border: solid 1px #00aff0;
+            background-color: #00aff0;
+            color: white;
+            border-radius: 3px;
+            outline: none;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 100%;
+            cursor: pointer; }
+            html body .content .content-wrap .free-trial a:hover {
+              background-color: white;
+              color: #00aff0;
+              text-decoration: none; }
+            html body .content .content-wrap .free-trial a:focus {
+              text-decoration: none; }
+        html body .content .content-wrap .price {
+          margin-top: 40px; }
+          html body .content .content-wrap .price .price-wrap .price-title-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center; }
+            html body .content .content-wrap .price .price-wrap .price-title-panel .price-title {
+              font-size: 20px; }
+            html body .content .content-wrap .price .price-wrap .price-title-panel .price-subtitle {
+              color: #666;
+              font-size: 12px; }
+          html body .content .content-wrap .price .price-wrap .price-table thead tr {
+            height: 35px;
+            line-height: 35px; }
+            html body .content .content-wrap .price .price-wrap .price-table thead tr th {
+              background: #efefef;
+              border: 1px solid #e5e5e5;
+              vertical-align: middle;
+              text-align: center;
+              width: 75px; }
+            html body .content .content-wrap .price .price-wrap .price-table thead tr .col5 {
+              width: 300px; }
+          html body .content .content-wrap .price .price-wrap .price-table tbody tr {
+            height: 35px;
+            line-height: 35px; }
+            html body .content .content-wrap .price .price-wrap .price-table tbody tr td {
+              border: 1px solid #e5e5e5;
+              vertical-align: middle;
+              text-align: center;
+              width: 75px; }
+              html body .content .content-wrap .price .price-wrap .price-table tbody tr td .col5td {
+                width: 300px; }
+          html body .content .content-wrap .price .price-wrap .price-tip {
+            border: 1px solid #e1e1e1;
+            border-radius: 3px;
+            margin-top: 20px;
+            padding-top: 12px; }
+            html body .content .content-wrap .price .price-wrap .price-tip p {
+              font-size: 12px;
+              text-indent: 20px; }
+              html body .content .content-wrap .price .price-wrap .price-tip p a:hover {
+                cursor: pointer; }
+            html body .content .content-wrap .price .price-wrap .price-tip .price-tip-title {
+              font-size: 14px; }
+            html body .content .content-wrap .price .price-wrap .price-tip .line-panel .line {
+              height: 1px;
+              background-color: #e1e1e1; }
+        html body .content .content-wrap .monitor {
+          margin-top: 40px;
+          margin-bottom: 41px; }
+          html body .content .content-wrap .monitor .monitor-wrap .monitor-title-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center; }
+            html body .content .content-wrap .monitor .monitor-wrap .monitor-title-panel .monitor-title {
+              font-size: 20px; }
+            html body .content .content-wrap .monitor .monitor-wrap .monitor-title-panel .monitor-subtitle {
+              color: #666;
+              font-size: 12px; }
+          html body .content .content-wrap .monitor .monitor-wrap .monitor-table thead tr {
+            height: 35px;
+            line-height: 35px; }
+            html body .content .content-wrap .monitor .monitor-wrap .monitor-table thead tr th {
+              background: #efefef;
+              border: 1px solid #e5e5e5;
+              vertical-align: middle;
+              text-align: center;
+              width: 50px; }
+            html body .content .content-wrap .monitor .monitor-wrap .monitor-table thead tr .col2 {
+              width: 350px; }
+          html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr {
+            height: 35px;
+            line-height: 35px; }
+            html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr td {
+              border: 1px solid #e5e5e5;
+              vertical-align: middle;
+              text-align: center;
+              width: 50px; }
+              html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr td a:hover {
+                cursor: pointer; }
+            html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td {
+              width: 350px; }
+              html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td div .tooltip-inner {
+                max-width: none; }
+    html body .footer {
+      left: 0;
+      top: 1620px;
+      width: 100%;
+      height: 40px;
+      border-top: 1px solid #e1e1e1;
+      background-color: white; }
+      html body .footer .footer-panel {
+        height: 100%;
+        display: flex;
+        justify-content: center; }
+        html body .footer .footer-panel .footer-image {
+          display: flex;
+          align-items: center; }
+          html body .footer .footer-panel .footer-image img {
+            width: 32px;
+            height: 32px; }
+        html body .footer .footer-panel .copyright {
+          margin-left: 10px;
+          display: flex;
+          align-items: center; }
+          html body .footer .footer-panel .copyright span {
+            color: #666; }
+
+@media (min-width: 768px) {
+  html {
+    height: 1660px; }
+    html body {
+      height: 1660px;
+      position: relative; }
+      html body .pg-canvas {
+        width: 100%; }
+      html body .header, html body .content, html body .footer {
+        position: absolute; }
+      html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td div {
+        display: flex;
+        justify-content: center; }
+        html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td div span {
+          display: inline-block;
+          max-width: 330px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; } }
+@media (max-width: 768px) {
+  html body .header .header-panel {
+    justify-content: center; }
+  html body .content .content-wrap .slogan span {
+    font-size: 16px; }
+  html body .content .content-wrap .description {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px; }
+  html body .content .content-wrap .price, html body .content .content-wrap .monitor {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 12px; }
+  html body .content .content-wrap .monitor {
+    margin-bottom: 30px; } }
+
+/*# sourceMappingURL=tongqu.css.map */

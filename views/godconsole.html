@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="keywords" content="上帝之眼,同去热门,同去监控,同去排名,青鸟工作室,小众场景">
+    <meta name="description" content="同去监控项目上帝之眼">
+    <title>上帝之眼 | 同去热门项目</title>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/godconsole.css" rel="stylesheet">
+    <script type='text/javascript'>
+        var _vds = _vds || [];
+        window._vds = _vds;
+        (function(){
+            _vds.push(['setAccountId', '894c1782d7fb559a']);
+            (function() {
+              var vds = document.createElement('script');
+              vds.type='text/javascript';
+              vds.async = true;
+              vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(vds, s);
+            })();
+        })();
+    </script>
+</head>
+<body id="particle">
+    <div class="header">
+        <div class="header-panel">
+            <ul class="header-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/tongqu/">同去</a></li>
+                <li><a href="/contact">联系</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-wrap">
+            <div class="god">
+                <div class="god-wrap">
+                    <div class="god-title">
+                        <p>上帝之眼</p>
+                    </div>
+                    <table class="god-table">
+                        <thead>
+                            <tr>
+                                <th class="col1">浏览数</th>
+                                <th class="col2">索引</th>
+                                <th class="col3">代号</th>
+                                <th class="col4">空闲</th>
+                                <th class="col5">名单</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(var i=0; i<=32; i++) { var j=(i<=8 ? 0 : i); %>
+                                <tr>
+                                    <td class="col1td"><%= increaseViewsIndex[i] %></td>
+                                    <td class="col2td"><%= i %></td>
+                                    <td class="col3td"><%= keyIndex[i] %></td>
+                                    <td class="col4td"><%= consoleInfos[i].status %></td>
+                                    <td class="col5td">
+                                        <div>
+                                            <span class="col5span" data-toggle="tooltip" title="<%= JSON.stringify(consoleInfos[j].blacklist) %>">
+                                                <% consoleInfos[j].blacklist.forEach(function(blackid){ %>
+                                                    <span>[<del><%= blackid %></del>]</span>
+                                                <% }) %>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="footer-panel">
+        <div class="footer-image">
+            <img src="./images/logo.png" alt="青鸟" />
+        </div>
+        <div class="copyright">
+            <span>©2016 qingniao.tech 青鸟工作室</span>
+        </div>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="./javascripts/jquery.particleground.min.js"></script>
+<script>
+    $(function() {
+        if($(window).width() > 768) {
+            $('#particle').particleground({
+                dotColor: '#c8c8c8',
+                lineColor: '#6d6d6d'
+            });
+        }
+        $("[data-toggle='tooltip']").tooltip();
+    });
+</script>
+</body>
+</html>

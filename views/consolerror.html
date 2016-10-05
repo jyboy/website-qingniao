@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="keywords" content="同去热门项目控制台,青鸟工作室,同去热门,同去监控,小众场景">
+    <meta name="description" content="青鸟工作室同去热门项目控制台">
+    <title><%= consolerror.title %> | 同去热门项目</title>
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./stylesheets/console.css" rel="stylesheet">
+</head>
+<body id="particle">
+    <div class="header">
+        <div class="header-panel">
+            <ul class="header-list">
+                <li><a href="/">首页</a></li>
+                <li><a href="/tongqu/">同去</a></li>
+                <li><a href="/contact">联系</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-wrap">
+            <div class="console-title">
+                <p>控制台</p>
+            </div>
+            <div class="console-content" id="consoleContent">
+                <div class="console-content-wrap" id="consoleContentWrap">
+                    <p>非常抱歉，<%= consolerror.content %></p>
+                    <p>请联系我们或 <a onclick="javascript:history.go(-1);">返回上一页</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    <div class="footer-panel">
+        <div class="footer-image">
+            <img src="./images/logo.png" alt="青鸟" />
+        </div>
+        <div class="copyright">
+            <span>©2016 qingniao.tech 青鸟工作室</span>
+        </div>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="./javascripts/jquery.particleground.min.js"></script>
+<script>
+    $(function() {
+        $("#particle").particleground({
+            dotColor: '#c8c8c8',
+            lineColor: '#6d6d6d'
+        });
+    });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script","//widget.daovoice.io/widget/dfc7794b.js","daovoice");
+</script>
+<script>
+    daovoice('init', {
+        app_id: "a229b412",
+    });
+    daovoice('update');
+</script>
+</body>
+</html>
