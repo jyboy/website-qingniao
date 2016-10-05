@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
 var ejs = require('ejs');
-var routes = require('./routes/index');
+var index = require('./routes/index');
 var tongqu = require('./routes/tongqu');
 var contact = require('./routes/contact');
 var app = express();
@@ -26,7 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/tongqu', express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
 app.use('/tongqu', tongqu);
 app.use('/contact', contact);
 
