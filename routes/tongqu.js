@@ -117,13 +117,14 @@ while(j--) {
   router.get('/console' + key, function(req, res, next) {
     res.render('console');
   });
-  (function() {
-    var m = j;
-    router.get('/update' + key, function(req, res, next) {
-      res.send(consoleInfos[m].content);
-    });
-  })();
 }
+
+router.get('/update', function(req, res, next) {
+  var query = require('url').parse(req.url, true).query;
+  var key = query.key;
+  var k = keyIndex.indexOf(key);
+  res.send(consoleInfos[k].content);
+});
 
 router.get('/consolebusy', function(req, res, next) {
   res.render('consolerror', {
@@ -191,12 +192,7 @@ function getPopularActivities() {
         };
         popularActivities.push(popularActivity);
       }
-      fs.writeFile('hotContent.json', JSON.stringify(popularActivities),  function(err) {
-        if (err) {
-          return console.error(err);
-        }
-        updateTime = moment().format('YYYY-MM-DD HH:mm');
-      });
+      updateTime = moment().format('YYYY-MM-DD HH:mm');
     });
   });
 }

@@ -72,7 +72,7 @@
         var dataTemp = "";
         var count = 1;
         var int = setInterval(function() {
-            $.get("update" + key, function(data, status) {
+            $.get("update?key=" + key, function(data, status) {
                 if(status == "success") {
                     if(count) {
                         dataFirst = data;
