@@ -111,6 +111,12 @@ html {
     justify-content: center; }
   html body .content .content-wrap {
     margin-left: 10px;
-    margin-right: 10px; } }
+    margin-right: 10px; }
+    html body .content .content-wrap .contact-content .contact-content-wrap div {
+      display: flex;
+      justify-content: center; }
+      html body .content .content-wrap .contact-content .contact-content-wrap div img {
+        width: 160px;
+        height: 160px; } }
 
 /*# sourceMappingURL=contact.css.map */

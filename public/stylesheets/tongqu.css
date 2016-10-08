@@ -226,7 +226,9 @@ html {
       position: relative; }
       html body .pg-canvas {
         width: 100%; }
-      html body .header, html body .content, html body .footer {
+      html body .header,
+      html body .content,
+      html body .footer {
         position: absolute; }
       html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td div {
         display: flex;
@@ -247,7 +249,8 @@ html {
     margin-right: 10px;
     padding-left: 10px;
     padding-right: 10px; }
-  html body .content .content-wrap .price, html body .content .content-wrap .monitor {
+  html body .content .content-wrap .price,
+  html body .content .content-wrap .monitor {
     margin-left: 10px;
     margin-right: 10px;
     font-size: 12px; }

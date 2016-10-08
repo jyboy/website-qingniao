@@ -118,7 +118,9 @@ html {
       position: relative; }
       html body .pg-canvas {
         width: 100%; }
-      html body .header, html body .content, html body .footer {
+      html body .header,
+      html body .content,
+      html body .footer {
         position: absolute; }
       html body .content .content-wrap .god .god-wrap .god-table tbody tr .col5td div {
         display: flex;
