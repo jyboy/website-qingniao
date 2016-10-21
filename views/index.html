@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cn">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="青鸟工作室,同去热门,同去监控,小众场景">
     <meta name="description" content="青鸟工作室，由上海交通大学研究生创办，专注互联网小众场景解决方案">
     <title>青鸟工作室 | 专注互联网小众场景解决方案</title>
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./stylesheets/index.css" rel="stylesheet">
+    <link href="./stylesheets/css/index.css" rel="stylesheet">
     <script type='text/javascript'>
-        var _vds = _vds || [];
-        window._vds = _vds;
-        (function(){
-            _vds.push(['setAccountId', '894c1782d7fb559a']);
-            (function() {
-              var vds = document.createElement('script');
-              vds.type='text/javascript';
-              vds.async = true;
-              vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(vds, s);
-            })();
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function() {
+        _vds.push(['setAccountId', '894c1782d7fb559a']);
+        (function() {
+            var vds = document.createElement('script');
+            vds.type = 'text/javascript';
+            vds.async = true;
+            vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(vds, s);
         })();
+    })();
     </script>
 </head>
+
 <body id="particle">
     <div class="header">
         <div class="header-panel">
@@ -47,7 +49,9 @@
             </div>
             <div class="description">
                 <p class="introduction"><strong>qingniao.tech</strong> 是一家由上海交通大学研究生创办的工作室</p>
-                <div class="line-panel"><p class="line"></p></div>
+                <div class="line-panel">
+                    <p class="line"></p>
+                </div>
                 <p class="detail">利用互联网最新最热的技术</p>
                 <p class="detail">青鸟工作室布局小众场景的挖掘和开拓</p>
                 <p class="detail">以更快满足大众需求</p>
@@ -64,37 +68,48 @@
         </div>
     </div>
     <div class="footer">
-    <div class="footer-panel">
-        <div class="footer-image">
-            <img src="./images/logo.png" alt="青鸟" />
-        </div>
-        <div class="copyright">
-            <span>©2016 qingniao.tech 青鸟工作室</span>
+        <div class="footer-panel">
+            <div class="footer-image">
+                <img src="./images/logo.png" alt="青鸟" />
+            </div>
+            <div class="copyright">
+                <span>©2016 qingniao.tech 青鸟工作室</span>
+            </div>
         </div>
     </div>
-</div>
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="./javascripts/jquery.particleground.min.js"></script>
-<script>
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./javascripts/jquery.particleground.min.js"></script>
+    <script>
     $(function() {
         $("#particle").particleground({
             dotColor: '#c8c8c8',
             lineColor: '#6d6d6d'
         });
         $("#archiveBtn").on("click", function() {
-            location.href = location.origin  + "/tongqu/";
+            location.href = location.origin + "/tongqu/";
         });
     });
-</script>
-<script>
-    (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script","//widget.daovoice.io/widget/dfc7794b.js","daovoice");
-</script>
-<script>
+    </script>
+    <script>
+    (function(i, s, o, g, r, a, m) {
+        i["DaoVoiceObject"] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        a.charset = "utf-8";
+        m.parentNode.insertBefore(a, m)
+    })(window, document, "script", "//widget.daovoice.io/widget/dfc7794b.js", "daovoice");
+    </script>
+    <script>
     daovoice('init', {
         app_id: "a229b412",
     });
     daovoice('update');
-</script>
+    </script>
 </body>
+
 </html>

@@ -3,76 +3,76 @@ html {
   html body {
     min-height: 100%; }
     html body .header {
+      display: flex;
       top: 0;
       left: 0;
+      border-bottom: 1px solid #e1e1e1;
       width: 100%;
       height: 60px;
-      border-bottom: 1px solid #e1e1e1;
       background-color: white;
-      display: flex;
       justify-content: center; }
       html body .header .header-panel {
+        display: flex;
         width: calc(100% - 80px);
         height: 100%;
-        display: flex;
         justify-content: flex-end; }
         html body .header .header-panel .header-list {
-          list-style: none;
-          height: 100%;
-          margin-bottom: 0;
           display: flex;
+          list-style: none;
+          margin-bottom: 0;
+          height: 100%;
           -webkit-padding-start: 0; }
           html body .header .header-panel .header-list li {
             width: 80px;
             height: 100%; }
             html body .header .header-panel .header-list li a {
+              display: flex;
               width: 80px;
               height: 100%;
-              display: flex;
-              justify-content: center;
-              align-items: center;
               font-size: 16px;
-              color: #333; }
+              color: #333;
+              align-items: center;
+              justify-content: center; }
               html body .header .header-panel .header-list li a:hover {
-                color: #337ab7;
                 text-decoration: none;
-                background-color: #f5f5f5;
+                color: #337ab7;
                 color: #00aff0;
+                background-color: #f5f5f5;
                 cursor: pointer; }
               html body .header .header-panel .header-list li a:focus {
                 text-decoration: none; }
           html body .header .header-panel .header-list .active {
             border-bottom: 2px solid #00aff0; }
     html body .content {
+      display: flex;
       top: 60px;
       left: 0;
       width: 100%;
       background-color: rgba(255, 255, 255, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center; }
+      align-items: center;
+      justify-content: center; }
       html body .content .content-wrap {
         width: 600px; }
         html body .content .content-wrap .tongqu {
           display: flex;
-          justify-content: center;
-          margin-top: 30px; }
+          margin-top: 30px;
+          justify-content: center; }
           html body .content .content-wrap .tongqu span {
             font-size: 40px; }
         html body .content .content-wrap .slogan {
           display: flex;
-          justify-content: center;
-          margin-top: 20px; }
+          margin-top: 20px;
+          justify-content: center; }
           html body .content .content-wrap .slogan span {
-            font-size: 20px;
-            color: #00aff0;
             display: inline-block;
             border: 2px solid #00aff0;
-            padding: 5px 10px; }
+            padding: 5px 10px;
+            font-size: 20px;
+            color: #00aff0; }
         html body .content .content-wrap .description {
+          margin-top: 20px;
           border: 1px solid #e1e1e1;
           border-radius: 3px;
-          margin-top: 20px;
           padding-top: 12px; }
           html body .content .content-wrap .description p {
             text-align: center;
@@ -81,55 +81,55 @@ html {
             display: flex;
             justify-content: center; }
             html body .content .content-wrap .description .line-panel .line {
-              height: 1px;
               width: 90%;
+              height: 1px;
               background-color: #e1e1e1; }
         html body .content .content-wrap .free-trial {
-          margin-top: 20px;
           display: flex;
+          margin-top: 20px;
           justify-content: center; }
           html body .content .content-wrap .free-trial a {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 16px;
+            border: solid 1px #00aff0;
+            border-radius: 3px;
             width: 140px;
             height: 34px;
-            border: solid 1px #00aff0;
-            background-color: #00aff0;
-            color: white;
-            border-radius: 3px;
-            outline: none;
-            vertical-align: middle;
-            text-align: center;
+            font-size: 16px;
             line-height: 100%;
-            cursor: pointer; }
+            text-align: center;
+            vertical-align: middle;
+            color: white;
+            background-color: #00aff0;
+            outline: none;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center; }
             html body .content .content-wrap .free-trial a:hover {
-              background-color: white;
+              text-decoration: none;
               color: #00aff0;
-              text-decoration: none; }
+              background-color: white; }
             html body .content .content-wrap .free-trial a:focus {
               text-decoration: none; }
         html body .content .content-wrap .price {
           margin-top: 40px; }
           html body .content .content-wrap .price .price-wrap .price-title-panel {
             display: flex;
-            flex-direction: column;
-            align-items: center; }
+            align-items: center;
+            flex-direction: column; }
             html body .content .content-wrap .price .price-wrap .price-title-panel .price-title {
               font-size: 20px; }
             html body .content .content-wrap .price .price-wrap .price-title-panel .price-subtitle {
-              color: #666;
-              font-size: 12px; }
+              font-size: 12px;
+              color: #666; }
           html body .content .content-wrap .price .price-wrap .price-table thead tr {
             height: 35px;
             line-height: 35px; }
             html body .content .content-wrap .price .price-wrap .price-table thead tr th {
-              background: #efefef;
               border: 1px solid #e5e5e5;
-              vertical-align: middle;
+              width: 75px;
               text-align: center;
-              width: 75px; }
+              vertical-align: middle;
+              background: #efefef; }
             html body .content .content-wrap .price .price-wrap .price-table thead tr .col5 {
               width: 300px; }
           html body .content .content-wrap .price .price-wrap .price-table tbody tr {
@@ -137,15 +137,15 @@ html {
             line-height: 35px; }
             html body .content .content-wrap .price .price-wrap .price-table tbody tr td {
               border: 1px solid #e5e5e5;
-              vertical-align: middle;
+              width: 75px;
               text-align: center;
-              width: 75px; }
+              vertical-align: middle; }
               html body .content .content-wrap .price .price-wrap .price-table tbody tr td .col5td {
                 width: 300px; }
           html body .content .content-wrap .price .price-wrap .price-tip {
+            margin-top: 20px;
             border: 1px solid #e1e1e1;
             border-radius: 3px;
-            margin-top: 20px;
             padding-top: 12px; }
             html body .content .content-wrap .price .price-wrap .price-tip p {
               font-size: 12px;
@@ -162,22 +162,22 @@ html {
           margin-bottom: 41px; }
           html body .content .content-wrap .monitor .monitor-wrap .monitor-title-panel {
             display: flex;
-            flex-direction: column;
-            align-items: center; }
+            align-items: center;
+            flex-direction: column; }
             html body .content .content-wrap .monitor .monitor-wrap .monitor-title-panel .monitor-title {
               font-size: 20px; }
             html body .content .content-wrap .monitor .monitor-wrap .monitor-title-panel .monitor-subtitle {
-              color: #666;
-              font-size: 12px; }
+              font-size: 12px;
+              color: #666; }
           html body .content .content-wrap .monitor .monitor-wrap .monitor-table thead tr {
             height: 35px;
             line-height: 35px; }
             html body .content .content-wrap .monitor .monitor-wrap .monitor-table thead tr th {
-              background: #efefef;
               border: 1px solid #e5e5e5;
-              vertical-align: middle;
+              width: 50px;
               text-align: center;
-              width: 50px; }
+              vertical-align: middle;
+              background: #efefef; }
             html body .content .content-wrap .monitor .monitor-wrap .monitor-table thead tr .col2 {
               width: 350px; }
           html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr {
@@ -185,9 +185,9 @@ html {
             line-height: 35px; }
             html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr td {
               border: 1px solid #e5e5e5;
-              vertical-align: middle;
+              width: 50px;
               text-align: center;
-              width: 50px; }
+              vertical-align: middle; }
               html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr td a:hover {
                 cursor: pointer; }
             html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td {
@@ -195,15 +195,15 @@ html {
               html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td div .tooltip-inner {
                 max-width: none; }
     html body .footer {
-      left: 0;
       top: 1620px;
+      left: 0;
+      border-top: 1px solid #e1e1e1;
       width: 100%;
       height: 40px;
-      border-top: 1px solid #e1e1e1;
       background-color: white; }
       html body .footer .footer-panel {
-        height: 100%;
         display: flex;
+        height: 100%;
         justify-content: center; }
         html body .footer .footer-panel .footer-image {
           display: flex;
@@ -212,8 +212,8 @@ html {
             width: 32px;
             height: 32px; }
         html body .footer .footer-panel .copyright {
-          margin-left: 10px;
           display: flex;
+          margin-left: 10px;
           align-items: center; }
           html body .footer .footer-panel .copyright span {
             color: #666; }
@@ -222,8 +222,8 @@ html {
   html {
     height: 1660px; }
     html body {
-      height: 1660px;
-      position: relative; }
+      position: relative;
+      height: 1660px; }
       html body .pg-canvas {
         width: 100%; }
       html body .header,
@@ -235,24 +235,24 @@ html {
         justify-content: center; }
         html body .content .content-wrap .monitor .monitor-wrap .monitor-table tbody tr .col2td div span {
           display: inline-block;
-          max-width: 330px;
           overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap; } }
+          max-width: 330px;
+          white-space: nowrap;
+          text-overflow: ellipsis; } }
 @media (max-width: 768px) {
   html body .header .header-panel {
     justify-content: center; }
   html body .content .content-wrap .slogan span {
     font-size: 16px; }
   html body .content .content-wrap .description {
-    margin-left: 10px;
     margin-right: 10px;
-    padding-left: 10px;
-    padding-right: 10px; }
+    margin-left: 10px;
+    padding-right: 10px;
+    padding-left: 10px; }
   html body .content .content-wrap .price,
   html body .content .content-wrap .monitor {
-    margin-left: 10px;
     margin-right: 10px;
+    margin-left: 10px;
     font-size: 12px; }
   html body .content .content-wrap .monitor {
     margin-bottom: 30px; } }

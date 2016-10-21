@@ -3,41 +3,56 @@ html {
     body {
         min-height: 100%;
         .header {
+            display: flex;
+
             top: 0;
             left: 0;
+
+            border-bottom: 1px solid #e1e1e1;
             width: 100%;
             height: 60px;
-            border-bottom: 1px solid #e1e1e1;
+
             background-color: white;
-            display: flex;
+
             justify-content: center;
             .header-panel {
+                display: flex;
+
                 width: calc(100% - 80px);
                 height: 100%;
-                display: flex;
+
                 justify-content: flex-end;
                 .header-list {
-                    list-style: none;
-                    height: 100%;
-                    margin-bottom: 0;
                     display: flex;
+
+                    list-style: none;
+
+                    margin-bottom: 0;
+                    height: 100%;
+
                     -webkit-padding-start: 0;
                     li {
                         width: 80px;
                         height: 100%;
                         a {
+                            display: flex;
+
                             width: 80px;
                             height: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+
                             font-size: 16px;
+
                             color: #333;
+
+                            align-items: center;
+                            justify-content: center;
                             &:hover {
-                                color: #337ab7;
                                 text-decoration: none;
-                                background-color: #f5f5f5;
+
+                                color: #337ab7;
                                 color: #00aff0;
+                                background-color: #f5f5f5;
+
                                 cursor: pointer;
                             }
                             &:focus {
@@ -52,78 +67,101 @@ html {
             }
         }
         .content {
+            display: flex;
+
             top: 60px;
             left: 0;
+
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
+
+            background-color: rgba(255, 255, 255, .8);
+
             align-items: center;
+            justify-content: center;
             .content-wrap {
                 width: 600px;
                 .tongqu {
                     display: flex;
-                    justify-content: center;
+
                     margin-top: 30px;
+
+                    justify-content: center;
                     span {
                         font-size: 40px;
                     }
                 }
                 .slogan {
                     display: flex;
-                    justify-content: center;
+
                     margin-top: 20px;
+
+                    justify-content: center;
                     span {
-                        font-size: 20px;
-                        color: #00aff0;
                         display: inline-block;
+
                         border: 2px solid #00aff0;
                         padding: 5px 10px;
+
+                        font-size: 20px;
+
+                        color: #00aff0;
                     }
                 }
                 .description {
+                    margin-top: 20px;
                     border: 1px solid #e1e1e1;
                     border-radius: 3px;
-                    margin-top: 20px;
                     padding-top: 12px;
                     p {
                         text-align: center;
+
                         color: #666;
                     }
                     .line-panel {
                         display: flex;
+
                         justify-content: center;
                         .line {
-                            height: 1px;
                             width: 90%;
+                            height: 1px;
+
                             background-color: #e1e1e1;
                         }
                     }
                 }
                 .free-trial {
-                    margin-top: 20px;
                     display: flex;
+
+                    margin-top: 20px;
+
                     justify-content: center;
                     a {
                         display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        font-size: 16px;
+
+                        border: solid 1px #00aff0;
+                        border-radius: 3px;
                         width: 140px;
                         height: 34px;
-                        border: solid 1px #00aff0;
-                        background-color: #00aff0;
-                        color: white;
-                        border-radius: 3px;
-                        outline: none;
-                        vertical-align: middle;
-                        text-align: center;
+
+                        font-size: 16px;
                         line-height: 100%;
+                        text-align: center;
+                        vertical-align: middle;
+
+                        color: white;
+                        background-color: #00aff0;
+
+                        outline: none;
+
                         cursor: pointer;
+
+                        align-items: center;
+                        justify-content: center;
                         &:hover {
-                            background-color: white;
-                            color: #00aff0;
                             text-decoration: none;
+
+                            color: #00aff0;
+                            background-color: white;
                         }
                         &:focus {
                             text-decoration: none;
@@ -135,27 +173,32 @@ html {
                     .price-wrap {
                         .price-title-panel {
                             display: flex;
-                            flex-direction: column;
+
                             align-items: center;
+                            flex-direction: column;
                             .price-title {
                                 font-size: 20px;
                             }
                             .price-subtitle {
-                                color: #666;
                                 font-size: 12px;
+
+                                color: #666;
                             }
                         }
                         .price-table {
                             thead {
                                 tr {
                                     height: 35px;
+
                                     line-height: 35px;
                                     th {
-                                        background: #efefef;
                                         border: 1px solid #e5e5e5;
-                                        vertical-align: middle;
-                                        text-align: center;
                                         width: 75px;
+
+                                        text-align: center;
+                                        vertical-align: middle;
+
+                                        background: #efefef;
                                     }
                                     .col5 {
                                         width: 300px;
@@ -165,12 +208,14 @@ html {
                             tbody {
                                 tr {
                                     height: 35px;
+
                                     line-height: 35px;
                                     td {
                                         border: 1px solid #e5e5e5;
-                                        vertical-align: middle;
-                                        text-align: center;
                                         width: 75px;
+
+                                        text-align: center;
+                                        vertical-align: middle;
                                         .col5td {
                                             width: 300px;
                                         }
@@ -179,9 +224,9 @@ html {
                             }
                         }
                         .price-tip {
+                            margin-top: 20px;
                             border: 1px solid #e1e1e1;
                             border-radius: 3px;
-                            margin-top: 20px;
                             padding-top: 12px;
                             p {
                                 font-size: 12px;
@@ -198,6 +243,7 @@ html {
                             .line-panel {
                                 .line {
                                     height: 1px;
+
                                     background-color: #e1e1e1;
                                 }
                             }
@@ -210,27 +256,32 @@ html {
                     .monitor-wrap {
                         .monitor-title-panel {
                             display: flex;
-                            flex-direction: column;
+
                             align-items: center;
+                            flex-direction: column;
                             .monitor-title {
                                 font-size: 20px;
                             }
                             .monitor-subtitle {
-                                color: #666;
                                 font-size: 12px;
+
+                                color: #666;
                             }
                         }
                         .monitor-table {
                             thead {
                                 tr {
                                     height: 35px;
+
                                     line-height: 35px;
                                     th {
-                                        background: #efefef;
                                         border: 1px solid #e5e5e5;
-                                        vertical-align: middle;
-                                        text-align: center;
                                         width: 50px;
+
+                                        text-align: center;
+                                        vertical-align: middle;
+
+                                        background: #efefef;
                                     }
                                     .col2 {
                                         width: 350px;
@@ -240,12 +291,14 @@ html {
                             tbody {
                                 tr {
                                     height: 35px;
+
                                     line-height: 35px;
                                     td {
                                         border: 1px solid #e5e5e5;
-                                        vertical-align: middle;
-                                        text-align: center;
                                         width: 50px;
+
+                                        text-align: center;
+                                        vertical-align: middle;
                                         a {
                                             &:hover {
                                                 cursor: pointer;
@@ -268,18 +321,23 @@ html {
             }
         }
         .footer {
-            left: 0;
             top: 1620px;
+            left: 0;
+
+            border-top: 1px solid #e1e1e1;
             width: 100%;
             height: 40px;
-            border-top: 1px solid #e1e1e1;
+
             background-color: white;
             .footer-panel {
-                height: 100%;
                 display: flex;
+
+                height: 100%;
+
                 justify-content: center;
                 .footer-image {
                     display: flex;
+
                     align-items: center;
                     img {
                         width: 32px;
@@ -287,8 +345,10 @@ html {
                     }
                 }
                 .copyright {
-                    margin-left: 10px;
                     display: flex;
+
+                    margin-left: 10px;
+
                     align-items: center;
                     span {
                         color: #666;
@@ -303,8 +363,9 @@ html {
     html {
         height: 1660px;
         body {
-            height: 1660px;
             position: relative;
+
+            height: 1660px;
             .pg-canvas {
                 width: 100%;
             }
@@ -323,13 +384,16 @@ html {
                                         .col2td {
                                             div {
                                                 display: flex;
+
                                                 justify-content: center;
                                                 span {
                                                     display: inline-block;
-                                                    max-width: 330px;
                                                     overflow: hidden;
-                                                    text-overflow: ellipsis;
+
+                                                    max-width: 330px;
+
                                                     white-space: nowrap;
+                                                    text-overflow: ellipsis;
                                                 }
                                             }
                                         }
@@ -360,15 +424,16 @@ html {
                         }
                     }
                     .description {
-                        margin-left: 10px;
                         margin-right: 10px;
-                        padding-left: 10px;
+                        margin-left: 10px;
                         padding-right: 10px;
+                        padding-left: 10px;
                     }
                     .price,
                     .monitor {
-                        margin-left: 10px;
                         margin-right: 10px;
+                        margin-left: 10px;
+
                         font-size: 12px;
                     }
                     .monitor {

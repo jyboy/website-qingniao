@@ -26,18 +26,13 @@ fs.readFile('consoleInfo.json', function(err, data) {
     }
     consoleInfosBackup = JSON.parse(data.toString());
     consoleInfos = JSON.parse(data.toString());
+    clearTrialBlacklist();
 });
 
 var rule = new schedule.RecurrenceRule();
 rule.minute = 0;
 schedule.scheduleJob(rule, function() {
-    consoleInfos[0].blacklist = [];
-    var k = 9;
-    while (k--) {
-        if (consoleInfos[k].status) {
-            consoleInfos[k].content = "";
-        }
-    }
+    clearTrialBlacklist();
 });
 
 getPopularActivities();
@@ -169,6 +164,16 @@ router.get('/console' + variables.godKey, function(req, res, next) {
         consoleInfos: consoleInfosBackup
     });
 });
+
+function clearTrialBlacklist() {
+    consoleInfos[0].blacklist = [];
+    var k = 9;
+    while (k--) {
+        if (consoleInfos[k].status) {
+            consoleInfos[k].content = "";
+        }
+    }
+}
 
 function getPopularActivities() {
     var indexUrl = homeUrl + "/index.php/api/act/type?type=0&offset=0&order=";

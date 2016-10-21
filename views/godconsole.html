@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-cn">
+
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
@@ -9,23 +10,24 @@
     <meta name="description" content="同去监控项目上帝之眼">
     <title>上帝之眼 | 同去热门项目</title>
     <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./stylesheets/godconsole.css" rel="stylesheet">
+    <link href="./stylesheets/css/godconsole.css" rel="stylesheet">
     <script type='text/javascript'>
-        var _vds = _vds || [];
-        window._vds = _vds;
-        (function(){
-            _vds.push(['setAccountId', '894c1782d7fb559a']);
-            (function() {
-              var vds = document.createElement('script');
-              vds.type='text/javascript';
-              vds.async = true;
-              vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-              var s = document.getElementsByTagName('script')[0];
-              s.parentNode.insertBefore(vds, s);
-            })();
+    var _vds = _vds || [];
+    window._vds = _vds;
+    (function() {
+        _vds.push(['setAccountId', '894c1782d7fb559a']);
+        (function() {
+            var vds = document.createElement('script');
+            vds.type = 'text/javascript';
+            vds.async = true;
+            vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(vds, s);
         })();
+    })();
     </script>
 </head>
+
 <body id="particle">
     <div class="header">
         <div class="header-panel">
@@ -78,21 +80,21 @@
         </div>
     </div>
     <div class="footer">
-    <div class="footer-panel">
-        <div class="footer-image">
-            <img src="./images/logo.png" alt="青鸟" />
-        </div>
-        <div class="copyright">
-            <span>©2016 qingniao.tech 青鸟工作室</span>
+        <div class="footer-panel">
+            <div class="footer-image">
+                <img src="./images/logo.png" alt="青鸟" />
+            </div>
+            <div class="copyright">
+                <span>©2016 qingniao.tech 青鸟工作室</span>
+            </div>
         </div>
     </div>
-</div>
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="./javascripts/jquery.particleground.min.js"></script>
-<script>
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="./javascripts/jquery.particleground.min.js"></script>
+    <script>
     $(function() {
-        if($(window).width() > 768) {
+        if ($(window).width() > 768) {
             $('#particle').particleground({
                 dotColor: '#c8c8c8',
                 lineColor: '#6d6d6d'
@@ -100,6 +102,7 @@
         }
         $("[data-toggle='tooltip']").tooltip();
     });
-</script>
+    </script>
 </body>
+
 </html>

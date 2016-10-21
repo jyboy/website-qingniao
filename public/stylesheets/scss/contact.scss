@@ -1,45 +1,64 @@
 html {
     height: 100%;
     body {
-        height: 100%;
         position: relative;
+
+        height: 100%;
+        .pg-canvas {
+            width: 100%;
+        }
         .header {
+            display: flex;
+
             position: absolute;
             top: 0;
             left: 0;
+
+            border-bottom: 1px solid #e1e1e1;
             width: 100%;
             height: 60px;
-            border-bottom: 1px solid #e1e1e1;
+
             background-color: white;
-            display: flex;
+
             justify-content: center;
             .header-panel {
+                display: flex;
+
                 width: calc(100% - 80px);
                 height: 100%;
-                display: flex;
+
                 justify-content: flex-end;
                 .header-list {
-                    list-style: none;
-                    height: 100%;
-                    margin-bottom: 0;
                     display: flex;
+
+                    list-style: none;
+
+                    margin-bottom: 0;
+                    height: 100%;
+
                     -webkit-padding-start: 0;
                     li {
                         width: 80px;
                         height: 100%;
                         a {
+                            display: flex;
+
                             width: 80px;
                             height: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
+
                             font-size: 16px;
+
                             color: #333;
+
+                            align-items: center;
+                            justify-content: center;
                             &:hover {
-                                color: #337ab7;
                                 text-decoration: none;
-                                background-color: #f5f5f5;
+
+                                color: #337ab7;
                                 color: #00aff0;
+                                background-color: #f5f5f5;
+
                                 cursor: pointer;
                             }
                             &:focus {
@@ -54,41 +73,49 @@ html {
             }
         }
         .content {
+            display: flex;
+
             position: absolute;
             top: 60px;
             left: 0;
+
             width: 100%;
             height: calc(100% - 100px);
-            background-color: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
+
+            background-color: rgba(255, 255, 255, .8);
+
             align-items: center;
+            justify-content: center;
             .content-wrap {
                 width: 600px;
-                .console-title {
+                .contact-title {
                     display: flex;
+
                     justify-content: center;
                     p {
                         font-size: 28px;
                     }
                 }
-                .console-content {
-                    height: 300px;
-                    overflow-y: auto;
+                .contact-content {
+                    display: flex;
+
+                    margin-top: 20px;
+                    margin-bottom: 80px;
                     border: 1px solid #e1e1e1;
                     border-radius: 3px;
-                    margin-top: 20px;
-                    margin-bottom: 60px;
-                    padding-top: 12px;
-                    display: flex;
+                    padding-top: 22px;
+                    padding-bottom: 10px;
+
                     justify-content: center;
-                    .console-content-wrap {
-                        width: 380px;
+                    .contact-content-wrap {
+                        width: 230px;
                         p {
-                            a {
-                                &:hover {
-                                    cursor: pointer;
-                                }
+                            font-size: 16px;
+                        }
+                        div {
+                            margin-top: -10px;
+                            img {
+                                width: 230px;
                             }
                         }
                     }
@@ -99,16 +126,21 @@ html {
             position: absolute;
             bottom: 0;
             left: 0;
+
+            border-top: 1px solid #e1e1e1;
             width: 100%;
             height: 40px;
-            border-top: 1px solid #e1e1e1;
+
             background-color: white;
             .footer-panel {
-                height: 100%;
                 display: flex;
+
+                height: 100%;
+
                 justify-content: center;
                 .footer-image {
                     display: flex;
+
                     align-items: center;
                     img {
                         width: 32px;
@@ -116,8 +148,10 @@ html {
                     }
                 }
                 .copyright {
-                    margin-left: 10px;
                     display: flex;
+
+                    margin-left: 10px;
+
                     align-items: center;
                     span {
                         color: #666;
@@ -138,13 +172,18 @@ html {
             }
             .content {
                 .content-wrap {
-                    margin-left: 10px;
                     margin-right: 10px;
-                    .console-content {
-                        .console-content-wrap {
-                            width: 90%;
-                            .console-content {
-                                margin-bottom: 30px;
+                    margin-left: 10px;
+                    .contact-content {
+                        .contact-content-wrap {
+                            div {
+                                display: flex;
+
+                                justify-content: center;
+                                img {
+                                    width: 160px;
+                                    height: 160px;
+                                }
                             }
                         }
                     }
