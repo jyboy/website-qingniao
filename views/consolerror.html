@@ -2,15 +2,11 @@
 <html lang="zh-cn">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include header.html %>
     <meta name="robots" content="noindex">
     <meta name="keywords" content="同去热门项目控制台,青鸟工作室,同去热门,同去监控,小众场景">
     <meta name="description" content="青鸟工作室同去热门项目控制台">
-    <title>
-        <%= consolerror.title %> | 同去热门项目</title>
-    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title> <%= consolerror.title %> | 同去热门项目</title>
     <link href="./stylesheets/css/console.css" rel="stylesheet">
 </head>
 
@@ -39,19 +35,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-panel">
-            <div class="footer-image">
-                <img src="./images/logo.png" alt="青鸟" />
-            </div>
-            <div class="copyright">
-                <span>©2016 qingniao.tech 青鸟工作室</span>
-            </div>
-        </div>
-    </div>
-    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="./javascripts/jquery.particleground.min.js"></script>
+    <% include footer.html %>
     <script>
     $(function() {
         $("#particle").particleground({
@@ -60,25 +44,7 @@
         });
     });
     </script>
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i["DaoVoiceObject"] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        a.charset = "utf-8";
-        m.parentNode.insertBefore(a, m)
-    })(window, document, "script", "//widget.daovoice.io/widget/dfc7794b.js", "daovoice");
-    </script>
-    <script>
-    daovoice('init', {
-        app_id: "a229b412",
-    });
-    daovoice('update');
-    </script>
+    <% include daovoice.html %>
 </body>
 
 </html>

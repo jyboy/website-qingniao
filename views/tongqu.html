@@ -2,29 +2,11 @@
 <html lang="zh-cn">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% include header.html %>
     <meta name="keywords" content="同去热门,同去监控,同去排名,青鸟工作室,小众场景">
     <meta name="description" content="同去监控项目是青鸟工作室的主要成果，让您在同去网发布的活动信息出现在首页最显眼的位置">
     <title>同去热门 | 青鸟工作室</title>
-    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="./stylesheets/css/tongqu.css" rel="stylesheet">
-    <script type='text/javascript'>
-    var _vds = _vds || [];
-    window._vds = _vds;
-    (function() {
-        _vds.push(['setAccountId', '894c1782d7fb559a']);
-        (function() {
-            var vds = document.createElement('script');
-            vds.type = 'text/javascript';
-            vds.async = true;
-            vds.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'dn-growing.qbox.me/vds.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(vds, s);
-        })();
-    })();
-    </script>
 </head>
 
 <body id="particle">
@@ -185,19 +167,7 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-panel">
-            <div class="footer-image">
-                <img src="./images/logo.png" alt="青鸟" />
-            </div>
-            <div class="copyright">
-                <span>©2016 qingniao.tech 青鸟工作室</span>
-            </div>
-        </div>
-    </div>
-    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="./javascripts/jquery.particleground.min.js"></script>
+    <% include footer.html %>
     <script>
     $(function() {
         if ($(window).width() > 768) {
@@ -209,25 +179,8 @@
         $("[data-toggle='tooltip']").tooltip();
     });
     </script>
-    <script>
-    (function(i, s, o, g, r, a, m) {
-        i["DaoVoiceObject"] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date();
-        a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        a.charset = "utf-8";
-        m.parentNode.insertBefore(a, m)
-    })(window, document, "script", "//widget.daovoice.io/widget/dfc7794b.js", "daovoice");
-    </script>
-    <script>
-    daovoice('init', {
-        app_id: "a229b412",
-    });
-    daovoice('update');
-    </script>
+    <% include daovoice.html %>
+    <% include growingio.html %>
 </body>
 
 </html>
