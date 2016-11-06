@@ -42,13 +42,25 @@ setInterval(function() {
 
 router.get('/', function(req, res, next) {
     res.render('tongqu', {
+
+        active: {
+            index: '',
+            tongqu: 'active',
+            contact: ''
+        },
         updateTime: updateTime,
         popularActivities: popularActivities
     });
 });
 
 router.get('/trial', function(req, res, next) {
-    res.render('trial');
+    res.render('trial', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        }
+    });
 });
 
 router.post('/trial', function(req, res, next) {
@@ -81,7 +93,13 @@ router.post('/trial', function(req, res, next) {
 });
 
 router.get('/formal', function(req, res, next) {
-    res.render('formal');
+    res.render('formal', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        }
+    });
 });
 router.post('/formal', function(req, res, next) {
     var tongquId = req.body.content;
@@ -110,7 +128,13 @@ var j = 33;
 while (j--) {
     var key = keyIndex[j];
     router.get('/console' + key, function(req, res, next) {
-        res.render('console');
+        res.render('console', {
+            active: {
+                index: '',
+                tongqu: '',
+                contact: ''
+            }
+        });
     });
 }
 
@@ -123,6 +147,11 @@ router.get('/update', function(req, res, next) {
 
 router.get('/consolebusy', function(req, res, next) {
     res.render('consolerror', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        },
         consolerror: {
             title: "忙碌警告",
             content: "当前没有可用免费线路"
@@ -132,6 +161,11 @@ router.get('/consolebusy', function(req, res, next) {
 
 router.get('/consolewarn1', function(req, res, next) {
     res.render('consolerror', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        },
         consolerror: {
             title: "权限警告",
             content: "由于权限问题无法为您服务"
@@ -141,6 +175,11 @@ router.get('/consolewarn1', function(req, res, next) {
 
 router.get('/consolewarn2', function(req, res, next) {
     res.render('consolerror', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        },
         consolerror: {
             title: "输入警告",
             content: "您的输入不符合要求"
@@ -150,6 +189,11 @@ router.get('/consolewarn2', function(req, res, next) {
 
 router.get('/consolewarn3', function(req, res, next) {
     res.render('consolerror', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        },
         consolerror: {
             title: "激活码警告",
             content: "您的激活码无效"
@@ -159,6 +203,11 @@ router.get('/consolewarn3', function(req, res, next) {
 
 router.get('/console' + variables.godKey, function(req, res, next) {
     res.render('godconsole', {
+        active: {
+            index: '',
+            tongqu: '',
+            contact: ''
+        },
         increaseViewsIndex: increaseViewsIndex,
         keyIndex: keyIndex,
         consoleInfos: consoleInfosBackup
