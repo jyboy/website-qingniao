@@ -353,6 +353,10 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
             req.on('error', function(e) {
                 views++;
                 count++;
+                var largeNum = parseInt(views / updateFreq);
+                if (largeNum == keyNum) {
+                    keyNum++;
+                }
                 callback(null, indexUrl);
                 console.error('Problem with http get: ' + e.message);
             });
@@ -377,6 +381,10 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
             req.on('error', function(e) {
                 views++;
                 count++;
+                var largeNum = parseInt(views / updateFreq);
+                if (largeNum == keyNum) {
+                    keyNum++;
+                }
                 callback(null, indexUrl);
                 console.error('Problem with shttp get: ' + e.message);
             });

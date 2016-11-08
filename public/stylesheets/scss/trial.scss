@@ -48,9 +48,6 @@ html {
 
                         -ms-flex-direction: column;
                             flex-direction: column;
-                        .input-panel-2 {
-                            margin-top: 10px;
-                        }
                         .input-panel {
                             display: -ms-flexbox;
                             display: flex;
@@ -89,6 +86,9 @@ html {
                                 -webkit-appearance: none;
                             }
                         }
+                        .input-panel-2 {
+                            margin-top: 10px;
+                        }
                         .submit-panel {
                             display: -ms-flexbox;
                             display: flex;
@@ -98,9 +98,6 @@ html {
                             -ms-flex-pack: center;
                             justify-content: center;
                             .form-submit {
-                                display: -ms-flexbox;
-                                display: flex;
-
                                 border: solid 1px #00aff0;
                                 border-radius: 3px;
                                 width: 140px;
@@ -109,7 +106,6 @@ html {
                                 font-size: 16px;
                                 line-height: 100%;
                                 text-align: center;
-                                vertical-align: middle;
 
                                 color: white;
                                 background-color: #00aff0;
@@ -117,11 +113,6 @@ html {
                                 outline: none;
 
                                 cursor: pointer;
-
-                                align-items: center;
-                                -ms-flex-align: center;
-                                -ms-flex-pack: center;
-                                justify-content: center;
                                 &:hover {
                                     color: #00aff0;
                                     background-color: white;
