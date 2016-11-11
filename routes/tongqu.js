@@ -115,7 +115,7 @@ while (j--) {
 }
 
 router.get('/update', function(req, res, next) {
-    var query = require('url').parse(req.url, true).query;
+    var query = url.parse(req.url, true).query;
     var key = query.key;
     var k = keyIndex.indexOf(key);
     res.send(consoleInfos[k].content);
