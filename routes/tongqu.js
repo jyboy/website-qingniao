@@ -11,8 +11,8 @@ var variables = require('../variables.js');
 
 var updateTime = "";
 var popularActivities = [];
-var homeUrl = "http://www.tongqu.me";
-var publicUrl = "http://www.tongqu.me/act/";
+var homeUrl = "http://tongqu.me";
+var publicUrl = "http://tongqu.me/act/";
 
 var keyIndex = variables.keyIndex;
 var increaseViewsIndex = variables.increaseViewsIndex;
