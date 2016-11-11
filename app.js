@@ -44,10 +44,14 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('consolerror', {
-        message: err.message,
+        active: {
+            index: '',
+            tongqu: '',
+            contact: 'active'
+        },
         consolerror: {
             title: "404",
-            content: "您要访问的页面不存在"
+            content: err.message
         }
     });
 });
