@@ -5,7 +5,6 @@ html {
     body {
         min-height: 100%;
         .content {
-            display: -ms-flexbox;
             display: flex;
 
             top: 60px;
@@ -16,8 +15,6 @@ html {
             background-color: rgba(255, 255, 255, .8);
 
             align-items: center;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
             justify-content: center;
             .content-wrap {
                 width: 600px;
@@ -26,10 +23,8 @@ html {
                     margin-bottom: 40px;
                     .god-wrap {
                         .god-title {
-                            display: -ms-flexbox;
                             display: flex;
 
-                            -ms-flex-pack: center;
                             justify-content: center;
                             p {
                                 font-size: 28px;
@@ -93,32 +88,26 @@ html {
 
             background-color: white;
             .footer-panel {
-                display: -ms-flexbox;
                 display: flex;
 
                 height: 100%;
 
-                -ms-flex-pack: center;
                 justify-content: center;
                 .footer-image {
-                    display: -ms-flexbox;
                     display: flex;
 
                     align-items: center;
-                    -ms-flex-align: center;
                     img {
                         width: 32px;
                         height: 32px;
                     }
                 }
                 .copyright {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-left: 10px;
 
                     align-items: center;
-                    -ms-flex-align: center;
                     span {
                         color: #666;
                     }
@@ -152,10 +141,8 @@ html {
                                     tr {
                                         .col5td {
                                             div {
-                                                display: -ms-flexbox;
                                                 display: flex;
 
-                                                -ms-flex-pack: center;
                                                 justify-content: center;
                                                 .col5span {
                                                     display: inline-block;

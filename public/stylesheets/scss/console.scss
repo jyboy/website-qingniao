@@ -10,7 +10,6 @@ html {
             position: absolute;
         }
         .content {
-            display: -ms-flexbox;
             display: flex;
 
             position: absolute;
@@ -23,23 +22,18 @@ html {
             background-color: rgba(255, 255, 255, .8);
 
             align-items: center;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
             justify-content: center;
             .content-wrap {
                 width: 600px;
                 .console-title {
-                    display: -ms-flexbox;
                     display: flex;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     p {
                         font-size: 28px;
                     }
                 }
                 .console-content {
-                    display: -ms-flexbox;
                     display: flex;
                     overflow-y: auto;
 
@@ -50,7 +44,6 @@ html {
                     padding-top: 12px;
                     height: 300px;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     .console-content-wrap {
                         width: 380px;
@@ -76,32 +69,26 @@ html {
 
             background-color: white;
             .footer-panel {
-                display: -ms-flexbox;
                 display: flex;
 
                 height: 100%;
 
-                -ms-flex-pack: center;
                 justify-content: center;
                 .footer-image {
-                    display: -ms-flexbox;
                     display: flex;
 
                     align-items: center;
-                    -ms-flex-align: center;
                     img {
                         width: 32px;
                         height: 32px;
                     }
                 }
                 .copyright {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-left: 10px;
 
                     align-items: center;
-                    -ms-flex-align: center;
                     span {
                         color: #666;
                     }

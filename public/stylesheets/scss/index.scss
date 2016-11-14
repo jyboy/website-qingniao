@@ -13,7 +13,6 @@ html {
             position: absolute;
         }
         .content {
-            display: -ms-flexbox;
             display: flex;
 
             position: absolute;
@@ -26,19 +25,14 @@ html {
             background-color: rgba(255, 255, 255, .8);
 
             align-items: center;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
             justify-content: center;
             .content-wrap {
                 width: 600px;
                 .image {
-                    display: -ms-flexbox;
                     display: flex;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     .image-panel {
-                        display: -ms-flexbox;
                         display: flex;
 
                         border: 1px solid #e1e1e1;
@@ -47,8 +41,6 @@ html {
                         height: 100px;
 
                         align-items: center;
-                        -ms-flex-align: center;
-                        -ms-flex-pack: center;
                         justify-content: center;
                         img {
                             width: 80px;
@@ -57,10 +49,8 @@ html {
                     }
                 }
                 .workshop {
-                    display: -ms-flexbox;
                     display: flex;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     span {
                         font-size: 40px;
@@ -78,10 +68,8 @@ html {
                         font-size: 16px;
                     }
                     .line-panel {
-                        display: -ms-flexbox;
                         display: flex;
 
-                        -ms-flex-pack: center;
                         justify-content: center;
                         .line {
                             width: 65%;
@@ -99,25 +87,19 @@ html {
                     }
                 }
                 .archive {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-top: 20px;
                     margin-bottom: 30px;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     .archive-wrap {
-                        display: -ms-flexbox;
                         display: flex;
 
-                        -ms-flex-direction: column;
-                            flex-direction: column;
+                        flex-direction: column;
                         .archive-text {
-                            display: -ms-flexbox;
                             display: flex;
 
-                            -ms-flex-pack: center;
                             justify-content: center;
                             span {
                                 color: #999;
@@ -167,32 +149,28 @@ html {
 
             background-color: white;
             .footer-panel {
-                display: -ms-flexbox;
                 display: flex;
 
                 height: 100%;
 
-                -ms-flex-pack: center;
                 justify-content: center;
                 .footer-image {
-                    display: -ms-flexbox;
                     display: flex;
 
                     align-items: center;
-                    -ms-flex-align: center;
+
                     img {
                         width: 32px;
                         height: 32px;
                     }
                 }
                 .copyright {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-left: 10px;
 
                     align-items: center;
-                    -ms-flex-align: center;
+
                     span {
                         color: #666;
                     }

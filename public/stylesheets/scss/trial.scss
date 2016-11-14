@@ -13,7 +13,6 @@ html {
             position: absolute;
         }
         .content {
-            display: -ms-flexbox;
             display: flex;
 
             position: absolute;
@@ -26,16 +25,12 @@ html {
             background-color: rgba(255, 255, 255, .8);
 
             align-items: center;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
             justify-content: center;
             .content-wrap {
                 width: 600px;
                 .prepare-title {
-                    display: -ms-flexbox;
                     display: flex;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     p {
                         font-size: 28px;
@@ -43,18 +38,13 @@ html {
                 }
                 form {
                     .form-wrap {
-                        display: -ms-flexbox;
                         display: flex;
 
-                        -ms-flex-direction: column;
-                            flex-direction: column;
+                        flex-direction: column;
                         .input-panel {
-                            display: -ms-flexbox;
                             display: flex;
 
                             align-items: center;
-                            -ms-flex-align: center;
-                            -ms-flex-pack: center;
                             justify-content: center;
                             span {
                                 font-size: 18px;
@@ -90,12 +80,10 @@ html {
                             margin-top: 10px;
                         }
                         .submit-panel {
-                            display: -ms-flexbox;
                             display: flex;
 
                             margin-top: 20px;
 
-                            -ms-flex-pack: center;
                             justify-content: center;
                             .form-submit {
                                 border: solid 1px #00aff0;
@@ -159,32 +147,28 @@ html {
 
             background-color: white;
             .footer-panel {
-                display: -ms-flexbox;
                 display: flex;
 
                 height: 100%;
 
-                -ms-flex-pack: center;
                 justify-content: center;
                 .footer-image {
-                    display: -ms-flexbox;
                     display: flex;
 
                     align-items: center;
-                    -ms-flex-align: center;
+
                     img {
                         width: 32px;
                         height: 32px;
                     }
                 }
                 .copyright {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-left: 10px;
 
                     align-items: center;
-                    -ms-flex-align: center;
+
                     span {
                         color: #666;
                     }

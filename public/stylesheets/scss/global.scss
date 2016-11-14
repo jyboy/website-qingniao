@@ -2,7 +2,6 @@ html {
     body {
         font-family: "Helvetica Neue","Hiragino Sans GB","WenQuanYi Micro Hei","Microsoft Yahei",sans-serif;
         .header {
-            display: -ms-flexbox;
             display: flex;
 
             top: 0;
@@ -14,19 +13,15 @@ html {
 
             background-color: white;
 
-            -ms-flex-pack: center;
             justify-content: center;
             .header-panel {
-                display: -ms-flexbox;
                 display: flex;
 
                 width: calc(100% - 80px);
                 height: 100%;
 
-                -ms-flex-pack: end;
                 justify-content: flex-end;
                 .header-list {
-                    display: -ms-flexbox;
                     display: flex;
 
                     list-style: none;
@@ -39,7 +34,6 @@ html {
                         width: 80px;
                         height: 100%;
                         a {
-                            display: -ms-flexbox;
                             display: flex;
 
                             width: 80px;
@@ -50,8 +44,6 @@ html {
                             color: #333;
 
                             align-items: center;
-                            -ms-flex-align: center;
-                            -ms-flex-pack: center;
                             justify-content: center;
                             &:hover {
                                 text-decoration: none;
@@ -81,7 +73,6 @@ html {
         body {
             .header {
                 .header-panel {
-                    -ms-flex-pack: center;
                     justify-content: center;
                 }
             }

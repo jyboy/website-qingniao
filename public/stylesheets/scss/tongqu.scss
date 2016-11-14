@@ -5,7 +5,6 @@ html {
     body {
         min-height: 100%;
         .content {
-            display: -ms-flexbox;
             display: flex;
 
             top: 60px;
@@ -16,30 +15,24 @@ html {
             background-color: rgba(255, 255, 255, .8);
 
             align-items: center;
-            -ms-flex-align: center;
-            -ms-flex-pack: center;
             justify-content: center;
             .content-wrap {
                 width: 600px;
                 .tongqu {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-top: 30px;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     span {
                         font-size: 40px;
                     }
                 }
                 .slogan {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-top: 20px;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     span {
                         display: inline-block;
@@ -63,10 +56,8 @@ html {
                         color: #666;
                     }
                     .line-panel {
-                        display: -ms-flexbox;
                         display: flex;
 
-                        -ms-flex-pack: center;
                         justify-content: center;
                         .line {
                             width: 90%;
@@ -77,15 +68,12 @@ html {
                     }
                 }
                 .free-trial {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-top: 20px;
 
-                    -ms-flex-pack: center;
                     justify-content: center;
                     a {
-                        display: -ms-flexbox;
                         display: flex;
 
                         border: solid 1px #00aff0;
@@ -106,8 +94,6 @@ html {
                         cursor: pointer;
 
                         align-items: center;
-                        -ms-flex-align: center;
-                        -ms-flex-pack: center;
                         justify-content: center;
                         &:hover {
                             text-decoration: none;
@@ -124,13 +110,10 @@ html {
                     margin-top: 40px;
                     .price-wrap {
                         .price-title-panel {
-                            display: -ms-flexbox;
                             display: flex;
 
                             align-items: center;
-                            -ms-flex-align: center;
-                            -ms-flex-direction: column;
-                                flex-direction: column;
+                            flex-direction: column;
                             .price-title {
                                 font-size: 20px;
                             }
@@ -210,13 +193,10 @@ html {
                     margin-bottom: 41px;
                     .monitor-wrap {
                         .monitor-title-panel {
-                            display: -ms-flexbox;
                             display: flex;
 
                             align-items: center;
-                            -ms-flex-align: center;
-                            -ms-flex-direction: column;
-                                flex-direction: column;
+                            flex-direction: column;
                             .monitor-title {
                                 font-size: 20px;
                             }
@@ -288,32 +268,28 @@ html {
 
             background-color: white;
             .footer-panel {
-                display: -ms-flexbox;
                 display: flex;
 
                 height: 100%;
 
-                -ms-flex-pack: center;
                 justify-content: center;
                 .footer-image {
-                    display: -ms-flexbox;
                     display: flex;
 
                     align-items: center;
-                    -ms-flex-align: center;
+
                     img {
                         width: 32px;
                         height: 32px;
                     }
                 }
                 .copyright {
-                    display: -ms-flexbox;
                     display: flex;
 
                     margin-left: 10px;
 
                     align-items: center;
-                    -ms-flex-align: center;
+
                     span {
                         color: #666;
                     }
@@ -347,10 +323,8 @@ html {
                                     tr {
                                         .col2td {
                                             div {
-                                                display: -ms-flexbox;
                                                 display: flex;
 
-                                                -ms-flex-pack: center;
                                                 justify-content: center;
                                                 span {
                                                     display: inline-block;
