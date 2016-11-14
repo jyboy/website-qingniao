@@ -44,6 +44,6 @@ gulp.task('watch', function() {
     livereload.listen();
 
     // Watch any files in dist/, reload on change
-    gulp.watch(['public/stylesheets/css/*']).on('change', livereload.changed);
+    gulp.watch(['public/stylesheets/css/*.css']).on('change', livereload.changed);
 
 });
