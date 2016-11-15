@@ -32,13 +32,17 @@ gulp.task('clean', function() {
 });
 
 // Default task
-gulp.task('default', ['clean', 'scsscomb', 'styles']);
+gulp.task('default', ['clean', 'scsscomb'], function() {
+    gulp.start('styles');
+});
 
 // Watch
 gulp.task('watch', function() {
 
     // Watch .scss files
-    gulp.watch('public/stylesheets/scss/*.scss', ['scsscomb', 'styles']);
+    gulp.watch('public/stylesheets/scss/*.scss', ['scsscomb'], function() {
+        gulp.start('styles');
+    });
 
     // Create LiveReload server
     livereload.listen();
