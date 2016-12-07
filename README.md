@@ -2,6 +2,6 @@
 
 qingniao studio website: [http://qingniao.tech/](http://qingniao.tech/)
 
-## License ##
+## License
 
 [MIT license](https://github.com/jyboy/qingniao.tech/blob/master/LICENSE)
