@@ -11,7 +11,9 @@ gulp.task('scsscomb', function() {
     return gulp.src('public/stylesheets/scss/*.scss')
         .pipe(csscomb())
         .pipe(gulp.dest('public/stylesheets/scss'))
-        .pipe(notify({ message: 'Scsscomb task complete' }));
+        .pipe(notify({
+            message: 'Scsscomb task complete'
+        }));
 });
 
 // Styles
@@ -23,7 +25,9 @@ gulp.task('styles', function() {
             browsers: ['last 1 version', 'ie 10']
         }))
         .pipe(gulp.dest('public/stylesheets/css'))
-        .pipe(notify({ message: 'Styles task complete' }));
+        .pipe(notify({
+            message: 'Styles task complete'
+        }));
 });
 
 // Clean
@@ -39,15 +43,10 @@ gulp.task('default', ['clean', 'scsscomb'], function() {
 // Watch
 gulp.task('watch', function() {
 
-    // Watch .scss files
-    gulp.watch('public/stylesheets/scss/*.scss', ['scsscomb'], function() {
-        gulp.start('styles');
-    });
+    gulp.watch('public/stylesheets/scss/*.scss', ['styles']);
 
-    // Create LiveReload server
     livereload.listen();
 
-    // Watch any files in dist/, reload on change
     gulp.watch(['public/stylesheets/css/*.css']).on('change', livereload.changed);
 
 });
