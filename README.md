@@ -1,6 +1,6 @@
 # qingniao.tech
 
-qingniao studio website: [http://qingniao.tech/](http://qingniao.tech/)
+Qingniao Studio website: [http://qingniao.tech/](http://qingniao.tech/)
 
 ## License
 
