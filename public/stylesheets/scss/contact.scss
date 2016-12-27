@@ -48,7 +48,12 @@ html {
 
                     justify-content: center;
                     .contact-content-wrap {
+                        display: flex;
+
                         width: 244px;
+
+                        align-items: center;
+                        flex-direction: column;
                         p {
                             font-size: 16px;
                         }
