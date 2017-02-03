@@ -15,7 +15,7 @@
     ],
     "main": "app.js",
     "scripts": {
-        "start": "forever start app.js"
+        "start": "pm2 start app.js"
     },
     "dependencies": {
         "async": "^2.1.2",
