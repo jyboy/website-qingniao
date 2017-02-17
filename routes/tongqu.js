@@ -1,26 +1,26 @@
-var express = require('express');
-var router = express.Router();
-var http = require('http');
-var moment = require('moment');
-var fs = require('fs');
-var async = require('async');
-var schedule = require('node-schedule');
-var shttp = require('socks5-http-client');
-var url = require('url');
-var variables = require('../variables.js');
+const express = require('express');
+const router = express.Router();
+const https = require('https');
+const moment = require('moment');
+const fs = require('fs');
+const async = require('async');
+const schedule = require('node-schedule');
+const shttps = require('socks5-https-client');
+const url = require('url');
+const variables = require('../variables.js');
 
 var updateTime = "";
 var popularActivities = [];
-var homeUrl = "http://tongqu.me";
-var publicUrl = "http://tongqu.me/act/";
+const homeUrl = "https://tongqu.me";
+const publicUrl = "https://tongqu.me/act/";
 
-var keyIndex = variables.keyIndex;
-var increaseViewsIndex = variables.increaseViewsIndex;
+const keyIndex = variables.keyIndex;
+const increaseViewsIndex = variables.increaseViewsIndex;
 
 var consoleInfos = [];
 var consoleInfosBackup = [];
 
-fs.readFile('consoleInfo.json', function(err, data) {
+fs.readFile('consoleInfo.json', (err, data) => {
     if (err) {
         return console.error(err);
     }
@@ -29,7 +29,7 @@ fs.readFile('consoleInfo.json', function(err, data) {
     clearTrialBlacklist();
 });
 
-var rule = new schedule.RecurrenceRule();
+const rule = new schedule.RecurrenceRule();
 rule.minute = 0;
 schedule.scheduleJob(rule, function() {
     clearTrialBlacklist();
@@ -40,9 +40,8 @@ setInterval(function() {
     getPopularActivities();
 }, 300000); // 同去热门实时每5min一更新
 
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
     res.render('tongqu', {
-
         active: {
             index: '',
             tongqu: 'active',
@@ -53,7 +52,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/trial', function(req, res, next) {
+router.get('/trial', (req, res, next) => {
     res.render('trial', {
         active: {
             index: '',
@@ -63,8 +62,8 @@ router.get('/trial', function(req, res, next) {
     });
 });
 
-router.post('/trial', function(req, res, next) {
-    var tongquId = req.body.content;
+router.post('/trial', (req, res, next) => {
+    const tongquId = req.body.content;
     if (/^\d{5}$/.test(tongquId)) {
         var trialBlacklist = consoleInfos[0].blacklist;
         if (trialBlacklist.indexOf(tongquId) == -1) {
@@ -92,7 +91,7 @@ router.post('/trial', function(req, res, next) {
     }
 });
 
-router.get('/formal', function(req, res, next) {
+router.get('/formal', (req, res, next) => {
     res.render('formal', {
         active: {
             index: '',
@@ -101,9 +100,10 @@ router.get('/formal', function(req, res, next) {
         }
     });
 });
-router.post('/formal', function(req, res, next) {
-    var tongquId = req.body.content;
-    var key = req.body.key;
+
+router.post('/formal', (req, res, next) => {
+    const tongquId = req.body.content;
+    const key = req.body.key;
     if (/^\d{5}$/.test(tongquId) && /^\d{4}$/.test(key)) {
         var k = keyIndex.indexOf(key);
         if (k > 8) {
@@ -127,7 +127,7 @@ router.post('/formal', function(req, res, next) {
 var j = 33;
 while (j--) {
     var key = keyIndex[j];
-    router.get('/console' + key, function(req, res, next) {
+    router.get('/console' + key, (req, res, next) => {
         res.render('console', {
             active: {
                 index: '',
@@ -138,14 +138,14 @@ while (j--) {
     });
 }
 
-router.get('/update', function(req, res, next) {
-    var query = url.parse(req.url, true).query;
-    var key = query.key;
-    var k = keyIndex.indexOf(key);
+router.get('/update', (req, res, next) => {
+    const query = url.parse(req.url, true).query;
+    const key = query.key;
+    const k = keyIndex.indexOf(key);
     res.send(consoleInfos[k].content);
 });
 
-router.get('/consolebusy', function(req, res, next) {
+router.get('/consolebusy', (req, res, next) => {
     res.render('consolerror', {
         active: {
             index: '',
@@ -159,7 +159,7 @@ router.get('/consolebusy', function(req, res, next) {
     });
 });
 
-router.get('/consolewarn1', function(req, res, next) {
+router.get('/consolewarn1', (req, res, next) => {
     res.render('consolerror', {
         active: {
             index: '',
@@ -173,7 +173,7 @@ router.get('/consolewarn1', function(req, res, next) {
     });
 });
 
-router.get('/consolewarn2', function(req, res, next) {
+router.get('/consolewarn2', (req, res, next) => {
     res.render('consolerror', {
         active: {
             index: '',
@@ -187,7 +187,7 @@ router.get('/consolewarn2', function(req, res, next) {
     });
 });
 
-router.get('/consolewarn3', function(req, res, next) {
+router.get('/consolewarn3', (req, res, next) => {
     res.render('consolerror', {
         active: {
             index: '',
@@ -201,7 +201,7 @@ router.get('/consolewarn3', function(req, res, next) {
     });
 });
 
-router.get('/console' + variables.godKey, function(req, res, next) {
+router.get('/console' + variables.godKey, (req, res, next) => {
     res.render('godconsole', {
         active: {
             index: '',
@@ -225,8 +225,12 @@ function clearTrialBlacklist() {
 }
 
 function getPopularActivities() {
-    var indexUrl = homeUrl + "/index.php/api/act/type?type=0&offset=0&order=";
-    http.get(indexUrl, function(res) {
+    const indexUrl = homeUrl + "/index.php/api/act/type?type=0&offset=0&order=";
+    const options = url.parse(indexUrl);
+    options.headers = {
+        'User-Agent': 'javascript'
+    };
+    https.get(options, (res) => {
         var source = "";
         res.on('data', function(data) {
             source += data;
@@ -252,14 +256,18 @@ function getPopularActivities() {
 }
 
 function getCurrentViews(tongquId, index, views) {
-    var indexUrl = homeUrl + "/index.php/api/act/detail?id=" + tongquId;
     if (!views) {
         consoleInfos[index].status = false;
         consoleInfosBackup[index].status = false;
         consoleInfos[index].content = "<p>" + moment().format('HH:mm:ss') + " 目标链接：" + publicUrl + tongquId + "</p>";
         consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 正在获取活动名称，更新当前浏览数...</p>";
     }
-    http.get(indexUrl, function(res) {
+    const indexUrl = homeUrl + "/index.php/api/act/detail?id=" + tongquId;
+    const options = url.parse(indexUrl);
+    options.headers = {
+        'User-Agent': 'javascript'
+    };
+    https.get(options, (res) => {
         var source = "";
         res.on('data', function(data) {
             source += data;
@@ -302,7 +310,12 @@ function getCurrentViews(tongquId, index, views) {
 }
 
 function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) {
-    var indexUrl = homeUrl + "/index.php/api/act/detail?id=" + tongquId; // 要刷的链接
+    const indexUrl = homeUrl + "/index.php/api/act/detail?id=" + tongquId; // 要刷的链接
+    const options = url.parse(indexUrl);
+    options.headers = {
+        'User-Agent': 'javascript'
+    };
+
     var views = currentViews; // 当前浏览数
     var concurrentNum = 1; // 设置并发数
     var updateFreq = 5; // 信息更新频率
@@ -336,8 +349,8 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
     var count = 0;
     var startDate = new Date();
     if (index < 9 && isFirst) {
-        var handle = function(indexUrl, callback) {
-            var req = http.get(indexUrl, function(res) {
+        var handle = (indexUrl, callback) => {
+            const req = https.get(options, (res) => {
                 views++;
                 count++;
                 var largeNum = parseInt(views / updateFreq);
@@ -350,7 +363,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                 }
                 callback(null, indexUrl);
             });
-            req.on('error', function(e) {
+            req.on('error', (err) => {
                 views++;
                 count++;
                 var largeNum = parseInt(views / updateFreq);
@@ -358,14 +371,14 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                console.error('Problem with http get: ' + e.message);
+                console.error('Problem with http get: ' + err.message);
             });
         };
     } else {
-        var handle = function(indexUrl, callback) {
-            var options = url.parse(indexUrl);
+        var handle = (indexUrl, callback) => {
+            const options = url.parse(indexUrl);
             options.socksPort = 9050; // Tor default port.
-            var req = shttp.get(options, function(res) {
+            const req = shttps.get(options, (res) => {
                 views++;
                 count++;
                 var largeNum = parseInt(views / updateFreq);
@@ -378,7 +391,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                 }
                 callback(null, indexUrl);
             });
-            req.on('error', function(e) {
+            req.on('error', (err) => {
                 views++;
                 count++;
                 var largeNum = parseInt(views / updateFreq);
@@ -386,31 +399,31 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                console.error('Problem with shttp get: ' + e.message);
+                console.error('Problem with shttp get: ' + err.message);
             });
         };
     }
 
-    async.mapLimit(indexUrls, concurrentNum, function(indexUrl, callback) {
+    async.mapLimit(indexUrls, concurrentNum, (indexUrl, callback) => {
         handle(indexUrl, callback);
-    }, function(err, result) {
+    }, (err, result) => {
         consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 基本完成，预期最终浏览数：" + views + "，正在确认...";
         getCurrentViews(tongquId, index, views);
     });
 }
 
 function getDateDiff(ms) {
-    var ms1 = Math.round(ms);
-    var hours = Math.floor(ms1 / (3600 * 1000));
-    var leave1 = ms1 % (3600 * 1000);
-    var minutes = Math.floor(leave1 / (60 * 1000));
-    var leave2 = leave1 % (60 * 1000);
-    var seconds = Math.round(leave2 / 1000);
+    const ms1 = Math.round(ms);
+    const hours = Math.floor(ms1 / (3600 * 1000));
+    const leave1 = ms1 % (3600 * 1000);
+    const minutes = Math.floor(leave1 / (60 * 1000));
+    const leave2 = leave1 % (60 * 1000);
+    const seconds = Math.round(leave2 / 1000);
     return [hours, minutes, seconds];
 }
 
 function writeConsoleInfos() {
-    fs.writeFile('consoleInfo.json', JSON.stringify(consoleInfosBackup), function(err) {
+    fs.writeFile('consoleInfo.json', JSON.stringify(consoleInfosBackup), (err) => {
         if (err) {
             return console.error(err);
         }

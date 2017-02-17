@@ -1,14 +1,15 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
-var http = require('http');
-var ejs = require('ejs');
-var index = require('./routes/index');
-var tongqu = require('./routes/tongqu');
-var contact = require('./routes/contact');
-var app = express();
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
+const http = require('http');
+const ejs = require('ejs');
+const index = require('./routes/index');
+const tongqu = require('./routes/tongqu');
+const contact = require('./routes/contact');
+
+const app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', ejs.__express);
@@ -29,19 +30,17 @@ app.use('/contact', contact);
 
 app.set('port', process.env.PORT || 3000);
 app.set('host', '127.0.0.1');
-var server = http.createServer(app).listen(app.get('port'), app.get('host'), function() {
-    console.log("Express server listening on port " + app.get('port')　 + " at host " + app.get('host'));
+const server = http.createServer(app).listen(app.get('port'), app.get('host'), function() {
+    console.log("Qingniao website server listening on port " + app.get('port')　 + " at host " + app.get('host'));
 });
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
-// error handlers
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('consolerror', {
         active: {
