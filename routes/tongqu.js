@@ -5,25 +5,23 @@ const moment = require('moment');
 const fs = require('fs');
 const async = require('async');
 const schedule = require('node-schedule');
-const shttps = require('socks5-https-client');
 const url = require('url');
 const variables = require('../variables.js');
 
-var updateTime = "";
-var popularActivities = [];
+let updateTime = "";
+let popularActivities = [];
 const homeUrl = "https://tongqu.me";
 const publicUrl = "https://tongqu.me/act/";
 
 const keyIndex = variables.keyIndex;
 const increaseViewsIndex = variables.increaseViewsIndex;
 
-var consoleInfos = [];
-var consoleInfosBackup = [];
+let consoleInfos = [];
+let consoleInfosBackup = [];
 
 fs.readFile('consoleInfo.json', (err, data) => {
-    if (err) {
+    if (err)
         return console.error(err);
-    }
     consoleInfosBackup = JSON.parse(data.toString());
     consoleInfos = JSON.parse(data.toString());
     clearTrialBlacklist();
@@ -65,13 +63,13 @@ router.get('/trial', (req, res, next) => {
 router.post('/trial', (req, res, next) => {
     const tongquId = req.body.content;
     if (/^\d{5}$/.test(tongquId)) {
-        var trialBlacklist = consoleInfos[0].blacklist;
+        let trialBlacklist = consoleInfos[0].blacklist;
         if (trialBlacklist.indexOf(tongquId) == -1) {
-            var isAllBusy = true;
-            var k = 9;
+            let isAllBusy = true;
+            let k = 9;
             while (k--) {
                 if (consoleInfos[k].status) {
-                    var key = keyIndex[k];
+                    let key = keyIndex[k];
                     res.redirect('console' + key);
                     getCurrentViews(tongquId, k, 0);
                     consoleInfos[0].blacklist.push(tongquId);
@@ -80,15 +78,12 @@ router.post('/trial', (req, res, next) => {
                     break;
                 }
             }
-            if (isAllBusy) {
+            if (isAllBusy)
                 res.redirect('consolebusy');
-            }
-        } else {
+        } else
             res.redirect('consolewarn1');
-        }
-    } else {
+    } else
         res.redirect('consolewarn2');
-    }
 });
 
 router.get('/formal', (req, res, next) => {
@@ -105,28 +100,25 @@ router.post('/formal', (req, res, next) => {
     const tongquId = req.body.content;
     const key = req.body.key;
     if (/^\d{5}$/.test(tongquId) && /^\d{4}$/.test(key)) {
-        var k = keyIndex.indexOf(key);
+        let k = keyIndex.indexOf(key);
         if (k > 8) {
-            var trialBlacklist = consoleInfos[k].blacklist;
+            let trialBlacklist = consoleInfos[k].blacklist;
             if (trialBlacklist.indexOf(tongquId) == -1) {
                 res.redirect('console' + key);
                 getCurrentViews(tongquId, k, 0);
                 consoleInfos[k].blacklist.push(tongquId);
                 consoleInfosBackup[k].blacklist.push(tongquId);
-            } else {
+            } else
                 res.redirect('consolewarn1');
-            }
-        } else {
+        } else
             res.redirect('consolewarn3');
-        }
-    } else {
+    } else
         res.redirect('consolewarn2');
-    }
 });
 
-var j = 33;
+let j = 33;
 while (j--) {
-    var key = keyIndex[j];
+    let key = keyIndex[j];
     router.get('/console' + key, (req, res, next) => {
         res.render('console', {
             active: {
@@ -201,7 +193,7 @@ router.get('/consolewarn3', (req, res, next) => {
     });
 });
 
-router.get('/console' + variables.godKey, (req, res, next) => {
+router.get(`/console${variables.godKey}`, (req, res, next) => {
     res.render('godconsole', {
         active: {
             index: '',
@@ -216,31 +208,30 @@ router.get('/console' + variables.godKey, (req, res, next) => {
 
 function clearTrialBlacklist() {
     consoleInfos[0].blacklist = [];
-    var k = 9;
+    let k = 9;
     while (k--) {
-        if (consoleInfos[k].status) {
+        if (consoleInfos[k].status)
             consoleInfos[k].content = "";
-        }
     }
 }
 
 function getPopularActivities() {
-    const indexUrl = homeUrl + "/index.php/api/act/type?type=0&offset=0&order=";
-    const options = url.parse(indexUrl);
+    const indexUrl = `${homeUrl}/index.php/api/act/type?type=0&offset=0&order=`;
+    let options = url.parse(indexUrl);
     options.headers = {
         'User-Agent': 'javascript'
     };
     https.get(options, (res) => {
-        var source = "";
-        res.on('data', function(data) {
+        let source = "";
+        res.on('data', (data) => {
             source += data;
         });
-        res.on('end', function() {
+        res.on('end', () => {
             source = JSON.parse(source);
-            var acts = source.result.acts;
+            let acts = source.result.acts;
             popularActivities = [];
-            for (var n = 0; n <= 9; n++) {
-                var popularActivity = {
+            for (let n = 0; n <= 9; n++) {
+                let popularActivity = {
                     name: acts[n].name,
                     url: publicUrl + acts[n].actid,
                     id: acts[n].actid,
@@ -259,50 +250,48 @@ function getCurrentViews(tongquId, index, views) {
     if (!views) {
         consoleInfos[index].status = false;
         consoleInfosBackup[index].status = false;
-        consoleInfos[index].content = "<p>" + moment().format('HH:mm:ss') + " 目标链接：" + publicUrl + tongquId + "</p>";
-        consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 正在获取活动名称，更新当前浏览数...</p>";
+        consoleInfos[index].content = `<p>${moment().format('HH:mm:ss')} 目标链接：${publicUrl + tongquId}</p>`;
+        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 正在获取活动名称，更新当前浏览数...</p>`;
     }
-    const indexUrl = homeUrl + "/index.php/api/act/detail?id=" + tongquId;
-    const options = url.parse(indexUrl);
+    const indexUrl = `${homeUrl}/index.php/api/act/detail?id=${tongquId}`;
+    let options = url.parse(indexUrl);
     options.headers = {
         'User-Agent': 'javascript'
     };
     https.get(options, (res) => {
-        var source = "";
-        res.on('data', function(data) {
+        let source = "";
+        res.on('data', (data) => {
             source += data;
         });
-        res.on('end', function() {
+        res.on('end', () => {
             source = JSON.parse(source);
-            var main_info = source.main_info;
-            var name = main_info.name;
-            var currentViews = parseInt(main_info.view_count);
+            let main_info = source.main_info;
+            let name = main_info.name;
+            let currentViews = parseInt(main_info.view_count);
             if (views) {
-                // 第n次确认
                 if (currentViews >= views) {
-                    consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 确认完成，实际最终浏览数：" + currentViews + "，符合预期</p>";
-                    consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 请 <a target='_blank' href=" + publicUrl + tongquId + ">点此确认</a> 如有问题，请与我们联系</p>";
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，符合预期</p>`;
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 请 <a target='_blank' href=${publicUrl + tongquId}>点此确认</a> 如有问题，请与我们联系</p>`;
                     consoleInfosBackup[index].content = consoleInfos[index].content;
                     consoleInfos[index].status = true;
                     consoleInfosBackup[index].status = true;
                     writeConsoleInfos();
                 } else {
-                    var toIncreaseViews = views - currentViews; // 要补充的浏览数
-                    if (toIncreaseViews == increaseViewsIndex[index]) {
-                        consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 错误：监测到同去网服务器暂时不稳定，请联系我们解决</p>";
-                    } else {
-                        consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 确认完成，实际最终浏览数：" + currentViews + "，不合预期</p>";
-                        consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 开始补充浏览量</p>";
-                        consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 目标浏览增长量(补充)：" + toIncreaseViews + "，正在准备...</p>";
+                    let toIncreaseViews = views - currentViews; // 要补充的浏览数
+                    if (toIncreaseViews == increaseViewsIndex[index])
+                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 错误：监测到同去网服务器暂时不稳定，请联系我们解决</p>`;
+                    else {
+                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，不合预期</p>`;
+                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 开始补充浏览量</p>`;
+                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 目标浏览增长量(补充)：${toIncreaseViews}，正在准备...</p>`;
                         increaseViews(tongquId, index, currentViews, toIncreaseViews, false);
                     }
                 }
             } else {
-                // 第1次
-                var toIncreaseViews = increaseViewsIndex[index]; // 要增加的浏览数
-                consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 已获取，活动名称：" + name + "</p>";
-                consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 已更新，当前浏览数：" + currentViews + "</p>";
-                consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 目标浏览增长量：" + toIncreaseViews + "，正在准备...</p>";
+                let toIncreaseViews = increaseViewsIndex[index]; // 要增加的浏览数
+                consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 已获取，活动名称：${name}</p>`;
+                consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 已更新，当前浏览数：${currentViews}</p>`;
+                consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 目标浏览增长量：${toIncreaseViews}，正在准备...</p>`;
                 increaseViews(tongquId, index, currentViews, toIncreaseViews, true);
             }
         });
@@ -310,15 +299,15 @@ function getCurrentViews(tongquId, index, views) {
 }
 
 function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) {
-    const indexUrl = homeUrl + "/index.php/api/act/detail?id=" + tongquId; // 要刷的链接
-    const options = url.parse(indexUrl);
+    const indexUrl = `${homeUrl}/index.php/api/act/detail?id=${tongquId}`; // 要刷的链接
+    let options = url.parse(indexUrl);
     options.headers = {
         'User-Agent': 'javascript'
     };
 
-    var views = currentViews; // 当前浏览数
-    var concurrentNum = 1; // 设置并发数
-    var updateFreq = 5; // 信息更新频率
+    let views = currentViews; // 当前浏览数
+    let concurrentNum = 1; // 设置并发数
+    let updateFreq = 5; // 信息更新频率
 
     if (isFirst) {
         if (index > 27) {
@@ -326,39 +315,37 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
             updateFreq = 50;
         } else {
             concurrentNum = 5;
-            if (index > 19) {
+            if (index > 19)
                 updateFreq = 20;
-            } else {
-                if (index > 8) {
+            else {
+                if (index > 8)
                     updateFreq = 10;
-                }
             }
         }
-    } else {
+    } else
         concurrentNum = 5;
-    }
 
-    var indexUrls = [];
-    var n = toIncreaseViews;
-    while (n--) {
+    let indexUrls = [];
+    let n = toIncreaseViews;
+    while (n--)
         indexUrls.push(indexUrl);
-    }
-    consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 准备完毕，正式开始</p>";
+    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 准备完毕，正式开始</p>`;
 
-    var keyNum = parseInt(views / updateFreq) + 1;
-    var count = 0;
-    var startDate = new Date();
+    let keyNum = parseInt(views / updateFreq) + 1;
+    let count = 0;
+    let startDate = new Date();
+    let handle;
     if (index < 9 && isFirst) {
-        var handle = (indexUrl, callback) => {
+        handle = (indexUrl, callback) => {
             const req = https.get(options, (res) => {
                 views++;
                 count++;
-                var largeNum = parseInt(views / updateFreq);
+                let largeNum = parseInt(views / updateFreq);
                 if (largeNum == keyNum) {
-                    var checkDate = new Date();
-                    var checkTimeDiff = checkDate.getTime() - startDate.getTime();
-                    var leftTimeDiff = getDateDiff(checkTimeDiff / count * (toIncreaseViews - count));
-                    consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 最新浏览数：" + views + " 预计剩余时间：" + leftTimeDiff[0] + "时" + leftTimeDiff[1] + "分" + leftTimeDiff[2] + "秒</p>";
+                    let checkDate = new Date();
+                    let checkTimeDiff = checkDate.getTime() - startDate.getTime();
+                    let leftTimeDiff = getDateDiff(checkTimeDiff / count * (toIncreaseViews - count));
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 最新浏览数：${views} 预计剩余时间：${leftTimeDiff[0]}时${leftTimeDiff[1]}分${leftTimeDiff[2]}秒</p>`;
                     keyNum++;
                 }
                 callback(null, indexUrl);
@@ -366,27 +353,25 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
             req.on('error', (err) => {
                 views++;
                 count++;
-                var largeNum = parseInt(views / updateFreq);
+                let largeNum = parseInt(views / updateFreq);
                 if (largeNum == keyNum) {
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                console.error('Problem with http get: ' + err.message);
+                console.error(`Problem with https get: ${err.message}`);
             });
         };
     } else {
-        var handle = (indexUrl, callback) => {
-            const options = url.parse(indexUrl);
-            options.socksPort = 9050; // Tor default port.
-            const req = shttps.get(options, (res) => {
+        handle = (indexUrl, callback) => {
+            const req = https.get(options, (res) => {
                 views++;
                 count++;
-                var largeNum = parseInt(views / updateFreq);
+                let largeNum = parseInt(views / updateFreq);
                 if (largeNum == keyNum) {
-                    var checkDate = new Date();
-                    var checkTimeDiff = checkDate.getTime() - startDate.getTime();
-                    var leftTimeDiff = getDateDiff(checkTimeDiff / count * (toIncreaseViews - count));
-                    consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 最新浏览数：" + views + " 预计剩余时间：" + leftTimeDiff[0] + "时" + leftTimeDiff[1] + "分" + leftTimeDiff[2] + "秒</p>";
+                    let checkDate = new Date();
+                    let checkTimeDiff = checkDate.getTime() - startDate.getTime();
+                    let leftTimeDiff = getDateDiff(checkTimeDiff / count * (toIncreaseViews - count));
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 最新浏览数：${views} 预计剩余时间：${leftTimeDiff[0]}时${leftTimeDiff[1]}分${leftTimeDiff[2]}秒</p>`;
                     keyNum++;
                 }
                 callback(null, indexUrl);
@@ -394,12 +379,12 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
             req.on('error', (err) => {
                 views++;
                 count++;
-                var largeNum = parseInt(views / updateFreq);
+                let largeNum = parseInt(views / updateFreq);
                 if (largeNum == keyNum) {
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                console.error('Problem with shttp get: ' + err.message);
+                console.error(`Problem with https get: ${err.message}`);
             });
         };
     }
@@ -407,7 +392,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
     async.mapLimit(indexUrls, concurrentNum, (indexUrl, callback) => {
         handle(indexUrl, callback);
     }, (err, result) => {
-        consoleInfos[index].content += "<p>" + moment().format('HH:mm:ss') + " 基本完成，预期最终浏览数：" + views + "，正在确认...";
+        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 基本完成，预期最终浏览数：${views}，正在确认...`;
         getCurrentViews(tongquId, index, views);
     });
 }
@@ -424,9 +409,8 @@ function getDateDiff(ms) {
 
 function writeConsoleInfos() {
     fs.writeFile('consoleInfo.json', JSON.stringify(consoleInfosBackup), (err) => {
-        if (err) {
+        if (err)
             return console.error(err);
-        }
     });
 }
 

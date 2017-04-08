@@ -31,11 +31,11 @@ app.use('/contact', contact);
 app.set('port', process.env.PORT || 3000);
 app.set('host', '127.0.0.1');
 const server = http.createServer(app).listen(app.get('port'), app.get('host'), function() {
-    console.log("Qingniao website server listening on port " + app.get('port')　 + " at host " + app.get('host'));
+    console.log(`Qingniao website server listening on port ${app.get('port')}　at host ${app.get('host')}`);
 });
 
 app.use((req, res, next) => {
-    var err = new Error('Not Found');
+    let err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
