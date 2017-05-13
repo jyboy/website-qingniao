@@ -142,18 +142,18 @@
                         </thead>
                         <tbody>
                             <% for(var i=0; i<=9; i++) { var j=i+1 %>
-                                <tr>
-                                    <td class="col1td"><%= j %></td>
-                                    <td class="col2td">
-                                        <div>
-                                            <span data-toggle="tooltip" title="<%= popularActivities[i].name %>"><%= popularActivities[i].name %></span>
-                                        </div>
-                                    </td>
-                                    <td class="col3td"><a target="_blank" href=<%= popularActivities[i].url %>><%= popularActivities[i].id %></a></td>
-                                    <td class="col4td"><%= popularActivities[i].views %></td>
-                                    <td class="col5td"><%= popularActivities[i].members %></td>
-                                    <td class="col6td"><%= popularActivities[i].comments %></td>
-                                </tr>
+                            <tr>
+                                <td class="col1td"><%= j %></td>
+                                <td class="col2td">
+                                    <div>
+                                        <span data-toggle="tooltip" title="<%= popularActivities[i].name %>"><%= popularActivities[i].name %></span>
+                                    </div>
+                                </td>
+                                <td class="col3td"><a target="_blank" href=<%= popularActivities[i].url %>><%= popularActivities[i].id %></a></td>
+                                <td class="col4td"><%= popularActivities[i].views %></td>
+                                <td class="col5td"><%= popularActivities[i].members %></td>
+                                <td class="col6td"><%= popularActivities[i].comments %></td>
+                            </tr>
                             <% } %>
                         </tbody>
                     </table>
