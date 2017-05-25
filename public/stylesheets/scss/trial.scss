@@ -75,6 +75,9 @@ html {
 
                                 -webkit-appearance: none;
                             }
+                            input {
+                                -moz-appearance: textfield;
+                            }
                         }
                         .input-panel-2 {
                             margin-top: 10px;
