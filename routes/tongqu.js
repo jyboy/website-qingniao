@@ -216,10 +216,10 @@ function clearTrialBlacklist() {
 }
 
 function getPopularActivities() {
-    const indexUrl = `${homeUrl}/index.php/api/act/type?type=0&offset=0&order=`;
+    const indexUrl = `${homeUrl}/api/act/type?type=0&offset=0&order=`;
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'javascript'
+        'User-Agent': 'request'
     };
     https.get(options, (res) => {
         let source = "";
@@ -253,10 +253,10 @@ function getCurrentViews(tongquId, index, views) {
         consoleInfos[index].content = `<p>${moment().format('HH:mm:ss')} 目标链接：${publicUrl + tongquId}</p>`;
         consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 正在获取活动名称，更新当前浏览数...</p>`;
     }
-    const indexUrl = `${homeUrl}/index.php/api/act/detail?id=${tongquId}`;
+    const indexUrl = `${homeUrl}/api/act/detail?id=${tongquId}`;
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'javascript'
+        'User-Agent': 'request'
     };
     https.get(options, (res) => {
         let source = "";
@@ -299,10 +299,10 @@ function getCurrentViews(tongquId, index, views) {
 }
 
 function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) {
-    const indexUrl = `${homeUrl}/index.php/api/act/detail?id=${tongquId}`; // 要刷的链接
+    const indexUrl = `${homeUrl}/api/act/detail?id=${tongquId}`; // 要刷的链接
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'javascript'
+        'User-Agent': 'request'
     };
 
     let views = currentViews; // 当前浏览数
