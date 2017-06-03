@@ -219,7 +219,7 @@ function getPopularActivities() {
     const indexUrl = `${homeUrl}/api/act/type?type=0&offset=0&order=`;
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'request'
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
     };
     https.get(options, (res) => {
         let source = "";
@@ -256,7 +256,7 @@ function getCurrentViews(tongquId, index, views) {
     const indexUrl = `${homeUrl}/api/act/detail?id=${tongquId}`;
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'request'
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
     };
     https.get(options, (res) => {
         let source = "";
@@ -302,7 +302,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
     const indexUrl = `${homeUrl}/api/act/detail?id=${tongquId}`; // 要刷的链接
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'request'
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
     };
 
     let views = currentViews; // 当前浏览数
