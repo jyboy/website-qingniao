@@ -221,29 +221,34 @@ function getPopularActivities() {
     options.headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
     };
-    https.get(options, (res) => {
-        let source = "";
-        res.on('data', (data) => {
-            source += data;
+    let getPopActs = () => {
+        https.get(options, (res) => {
+            let source = "";
+            res.on('data', (data) => {
+                source += data;
+            });
+            res.on('end', () => {
+                source = JSON.parse(source);
+                let acts = source.result.acts;
+                popularActivities = [];
+                for (let n = 0; n <= 9; n++) {
+                    let popularActivity = {
+                        name: acts[n].name,
+                        url: publicUrl + acts[n].actid,
+                        id: acts[n].actid,
+                        views: acts[n].view_count,
+                        members: acts[n].member_count,
+                        comments: acts[n].comment_count
+                    };
+                    popularActivities.push(popularActivity);
+                }
+                updateTime = moment().format('YYYY-MM-DD HH:mm');
+            });
+        }).on('error', (err) => {
+            getPopActs();
         });
-        res.on('end', () => {
-            source = JSON.parse(source);
-            let acts = source.result.acts;
-            popularActivities = [];
-            for (let n = 0; n <= 9; n++) {
-                let popularActivity = {
-                    name: acts[n].name,
-                    url: publicUrl + acts[n].actid,
-                    id: acts[n].actid,
-                    views: acts[n].view_count,
-                    members: acts[n].member_count,
-                    comments: acts[n].comment_count
-                };
-                popularActivities.push(popularActivity);
-            }
-            updateTime = moment().format('YYYY-MM-DD HH:mm');
-        });
-    });
+    };
+    getPopActs();
 }
 
 function getCurrentViews(tongquId, index, views) {
@@ -258,44 +263,49 @@ function getCurrentViews(tongquId, index, views) {
     options.headers = {
         'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
     };
-    https.get(options, (res) => {
-        let source = "";
-        res.on('data', (data) => {
-            source += data;
-        });
-        res.on('end', () => {
-            source = JSON.parse(source);
-            let main_info = source.main_info;
-            let name = main_info.name;
-            let currentViews = parseInt(main_info.view_count);
-            if (views) {
-                if (currentViews >= views) {
-                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，符合预期</p>`;
-                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 请 <a target='_blank' href=${publicUrl + tongquId}>点此确认</a> 如有问题，请与我们联系</p>`;
-                    consoleInfosBackup[index].content = consoleInfos[index].content;
-                    consoleInfos[index].status = true;
-                    consoleInfosBackup[index].status = true;
-                    writeConsoleInfos();
-                } else {
-                    let toIncreaseViews = views - currentViews; // 要补充的浏览数
-                    if (toIncreaseViews == increaseViewsIndex[index])
-                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 错误：监测到同去网服务器暂时不稳定，请联系我们解决</p>`;
-                    else {
-                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，不合预期</p>`;
-                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 开始补充浏览量</p>`;
-                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 目标浏览增长量(补充)：${toIncreaseViews}，正在准备...</p>`;
-                        increaseViews(tongquId, index, currentViews, toIncreaseViews, false);
+    let getCurViews = () => {
+        https.get(options, (res) => {
+            let source = "";
+            res.on('data', (data) => {
+                source += data;
+            });
+            res.on('end', () => {
+                source = JSON.parse(source);
+                let main_info = source.main_info;
+                let name = main_info.name;
+                let currentViews = parseInt(main_info.view_count);
+                if (views) {
+                    if (currentViews >= views) {
+                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，符合预期</p>`;
+                        consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 请 <a target='_blank' href=${publicUrl + tongquId}>点此确认</a> 如有问题，请与我们联系</p>`;
+                        consoleInfosBackup[index].content = consoleInfos[index].content;
+                        consoleInfos[index].status = true;
+                        consoleInfosBackup[index].status = true;
+                        writeConsoleInfos();
+                    } else {
+                        let toIncreaseViews = views - currentViews; // 要补充的浏览数
+                        if (toIncreaseViews == increaseViewsIndex[index])
+                            consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 错误：监测到同去网服务器暂时不稳定，请联系我们解决</p>`;
+                        else {
+                            consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，不合预期</p>`;
+                            consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 开始补充浏览量</p>`;
+                            consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 目标浏览增长量(补充)：${toIncreaseViews}，正在准备...</p>`;
+                            increaseViews(tongquId, index, currentViews, toIncreaseViews, false);
+                        }
                     }
+                } else {
+                    let toIncreaseViews = increaseViewsIndex[index]; // 要增加的浏览数
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 已获取，活动名称：${name}</p>`;
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 已更新，当前浏览数：${currentViews}</p>`;
+                    consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 目标浏览增长量：${toIncreaseViews}，正在准备...</p>`;
+                    increaseViews(tongquId, index, currentViews, toIncreaseViews, true);
                 }
-            } else {
-                let toIncreaseViews = increaseViewsIndex[index]; // 要增加的浏览数
-                consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 已获取，活动名称：${name}</p>`;
-                consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 已更新，当前浏览数：${currentViews}</p>`;
-                consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 目标浏览增长量：${toIncreaseViews}，正在准备...</p>`;
-                increaseViews(tongquId, index, currentViews, toIncreaseViews, true);
-            }
+            });
+        }).on('error', (err) => {
+            getCurViews();
         });
-    });
+    };
+    getCurViews();
 }
 
 function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) {
