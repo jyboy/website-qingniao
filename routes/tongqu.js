@@ -368,7 +368,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                console.error(`Problem with https get: ${err.message}`);
+                // console.error(`Problem with https get: ${err.message}`);
             });
         };
     } else {
@@ -394,7 +394,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                console.error(`Problem with https get: ${err.message}`);
+                // console.error(`Problem with https get: ${err.message}`);
             });
         };
     }
