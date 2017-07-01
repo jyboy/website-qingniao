@@ -64,7 +64,7 @@ router.post('/trial', (req, res, next) => {
     const tongquId = req.body.content;
     if (/^\d{5}$/.test(tongquId)) {
         let trialBlacklist = consoleInfos[0].blacklist;
-        if (trialBlacklist.indexOf(tongquId) == -1) {
+        if (trialBlacklist.indexOf(tongquId) === -1) {
             let isAllBusy = true;
             let k = 9;
             while (k--) {
@@ -103,7 +103,7 @@ router.post('/formal', (req, res, next) => {
         let k = keyIndex.indexOf(key);
         if (k > 8) {
             let trialBlacklist = consoleInfos[k].blacklist;
-            if (trialBlacklist.indexOf(tongquId) == -1) {
+            if (trialBlacklist.indexOf(tongquId) === -1) {
                 res.redirect('console' + key);
                 getCurrentViews(tongquId, k, 0);
                 consoleInfos[k].blacklist.push(tongquId);
@@ -284,7 +284,7 @@ function getCurrentViews(tongquId, index, views) {
                         writeConsoleInfos();
                     } else {
                         let toIncreaseViews = views - currentViews; // 要补充的浏览数
-                        if (toIncreaseViews == increaseViewsIndex[index])
+                        if (toIncreaseViews === increaseViewsIndex[index])
                             consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 错误：监测到同去网服务器暂时不稳定，请联系我们解决</p>`;
                         else {
                             consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，不合预期</p>`;
@@ -351,7 +351,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                 views++;
                 count++;
                 let largeNum = parseInt(views / updateFreq);
-                if (largeNum == keyNum) {
+                if (largeNum === keyNum) {
                     let checkDate = new Date();
                     let checkTimeDiff = checkDate.getTime() - startDate.getTime();
                     let leftTimeDiff = getDateDiff(checkTimeDiff / count * (toIncreaseViews - count));
@@ -364,7 +364,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                 views++;
                 count++;
                 let largeNum = parseInt(views / updateFreq);
-                if (largeNum == keyNum) {
+                if (largeNum === keyNum) {
                     keyNum++;
                 }
                 callback(null, indexUrl);
@@ -377,7 +377,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                 views++;
                 count++;
                 let largeNum = parseInt(views / updateFreq);
-                if (largeNum == keyNum) {
+                if (largeNum === keyNum) {
                     let checkDate = new Date();
                     let checkTimeDiff = checkDate.getTime() - startDate.getTime();
                     let leftTimeDiff = getDateDiff(checkTimeDiff / count * (toIncreaseViews - count));
@@ -390,7 +390,7 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                 views++;
                 count++;
                 let largeNum = parseInt(views / updateFreq);
-                if (largeNum == keyNum) {
+                if (largeNum === keyNum) {
                     keyNum++;
                 }
                 callback(null, indexUrl);
