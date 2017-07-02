@@ -284,8 +284,13 @@ function getCurrentViews(tongquId, index, views) {
                         writeConsoleInfos();
                     } else {
                         let toIncreaseViews = views - currentViews; // 要补充的浏览数
-                        if (toIncreaseViews === increaseViewsIndex[index])
+                        if (toIncreaseViews === increaseViewsIndex[index]) {
                             consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 错误：监测到同去网服务器暂时不稳定，请联系我们解决</p>`;
+                            consoleInfosBackup[index].content = consoleInfos[index].content;
+                            consoleInfos[index].status = true;
+                            consoleInfosBackup[index].status = true;
+                            writeConsoleInfos();
+                        }
                         else {
                             consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，不合预期</p>`;
                             consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 开始补充浏览量</p>`;
