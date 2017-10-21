@@ -222,8 +222,8 @@ function getPopularActivities() {
     let getPopActs = () => {
         https.get(options, (res) => {
             let rawData = '';
-            res.on('data', (trunk) => {
-                rawData += trunk;
+            res.on('data', (chunk) => {
+                rawData += chunk;
             });
             res.on('end', () => {
                 let acts;
@@ -268,8 +268,8 @@ function getCurrentViews(tongquId, index, views) {
     let getCurViews = () => {
         https.get(options, (res) => {
             let rawData = '';
-            res.on('data', (trunk) => {
-                rawData += trunk;
+            res.on('data', (chunk) => {
+                rawData += chunk;
             });
             res.on('end', () => {
                 let main_info;
