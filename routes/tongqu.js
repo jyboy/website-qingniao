@@ -1,17 +1,16 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const https = require('https');
-const moment = require('moment');
 const fs = require('fs');
-const async = require('async');
-const schedule = require('node-schedule');
 const url = require('url');
-const variables = require('../variables.js');
+const async = require('async');
+const moment = require('moment');
+const schedule = require('node-schedule');
+const variables = require('../variables');
 
-let updateTime = "";
+let updateTime = '';
 let popularActivities = [];
-const homeUrl = "https://tongqu.me";
-const publicUrl = "https://tongqu.me/act/";
+const homeUrl = 'https://tongqu.me';
+const publicUrl = homeUrl + '/act/';
 
 const keyIndex = variables.keyIndex;
 const increaseViewsIndex = variables.increaseViewsIndex;
@@ -20,8 +19,7 @@ let consoleInfos = [];
 let consoleInfosBackup = [];
 
 fs.readFile('consoleInfo.json', (err, data) => {
-    if (err)
-        return console.error(err);
+    if (err) return console.error(err);
     consoleInfosBackup = JSON.parse(data.toString());
     consoleInfos = JSON.parse(data.toString());
     clearTrialBlacklist();
@@ -36,7 +34,7 @@ schedule.scheduleJob(rule, function() {
 getPopularActivities();
 setInterval(function() {
     getPopularActivities();
-}, 300000); // 同去热门实时每5min一更新
+}, 5 * 60 * 1000); // 同去热门实时每5min一更新
 
 router.get('/', (req, res, next) => {
     res.render('tongqu', {
@@ -145,8 +143,8 @@ router.get('/consolebusy', (req, res, next) => {
             contact: ''
         },
         consolerror: {
-            title: "忙碌警告",
-            content: "当前没有可用免费线路"
+            title: '忙碌警告',
+            content: '当前没有可用免费线路'
         }
     });
 });
@@ -159,8 +157,8 @@ router.get('/consolewarn1', (req, res, next) => {
             contact: ''
         },
         consolerror: {
-            title: "权限警告",
-            content: "由于权限问题无法为您服务"
+            title: '权限警告',
+            content: '由于权限问题无法为您服务'
         }
     });
 });
@@ -173,8 +171,8 @@ router.get('/consolewarn2', (req, res, next) => {
             contact: ''
         },
         consolerror: {
-            title: "输入警告",
-            content: "您的输入不符合要求"
+            title: '输入警告',
+            content: '您的输入不符合要求'
         }
     });
 });
@@ -187,8 +185,8 @@ router.get('/consolewarn3', (req, res, next) => {
             contact: ''
         },
         consolerror: {
-            title: "激活码警告",
-            content: "您的激活码无效"
+            title: '激活码警告',
+            content: '您的激活码无效'
         }
     });
 });
@@ -211,7 +209,7 @@ function clearTrialBlacklist() {
     let k = 9;
     while (k--) {
         if (consoleInfos[k].status)
-            consoleInfos[k].content = "";
+            consoleInfos[k].content = '';
     }
 }
 
@@ -219,17 +217,21 @@ function getPopularActivities() {
     const indexUrl = `${homeUrl}/api/act/type?type=0&offset=0&order=`;
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0'
     };
     let getPopActs = () => {
         https.get(options, (res) => {
-            let source = "";
-            res.on('data', (data) => {
-                source += data;
+            let rawData = '';
+            res.on('data', (trunk) => {
+                rawData += trunk;
             });
             res.on('end', () => {
-                source = JSON.parse(source);
-                let acts = source.result.acts;
+                let acts;
+                try {
+                    acts = JSON.parse(rawData).result.acts;
+                } catch (err) {
+                    return getPopActs();
+                }
                 popularActivities = [];
                 for (let n = 0; n <= 9; n++) {
                     let popularActivity = {
@@ -261,19 +263,23 @@ function getCurrentViews(tongquId, index, views) {
     const indexUrl = `${homeUrl}/api/act/detail?id=${tongquId}`;
     let options = url.parse(indexUrl);
     options.headers = {
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:54.0) Gecko/20100101 Firefox/54.0'
+        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:57.0) Gecko/20100101 Firefox/57.0'
     };
     let getCurViews = () => {
         https.get(options, (res) => {
-            let source = "";
-            res.on('data', (data) => {
-                source += data;
+            let rawData = '';
+            res.on('data', (trunk) => {
+                rawData += trunk;
             });
             res.on('end', () => {
-                source = JSON.parse(source);
-                let main_info = source.main_info;
+                let main_info;
+                try {
+                    main_info = JSON.parse(rawData).main_info;
+                } catch (err) {
+                    return getCurViews();
+                }
                 let name = main_info.name;
-                let currentViews = parseInt(main_info.view_count);
+                let currentViews = +main_info.view_count;
                 if (views) {
                     if (currentViews >= views) {
                         consoleInfos[index].content += `<p>${moment().format('HH:mm:ss')} 确认完成，实际最终浏览数：${currentViews}，符合预期</p>`;
@@ -373,7 +379,6 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                // console.error(`Problem with https get: ${err.message}`);
             });
         };
     } else {
@@ -399,7 +404,6 @@ function increaseViews(tongquId, index, currentViews, toIncreaseViews, isFirst) 
                     keyNum++;
                 }
                 callback(null, indexUrl);
-                // console.error(`Problem with https get: ${err.message}`);
             });
         };
     }
@@ -424,10 +428,8 @@ function getDateDiff(ms) {
 
 function writeConsoleInfos() {
     fs.writeFile('consoleInfo.json', JSON.stringify(consoleInfosBackup), (err) => {
-        if (err)
-            return console.error(err);
+        if (err) return console.error(err);
     });
 }
-
 
 module.exports = router;
