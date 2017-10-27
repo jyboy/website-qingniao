@@ -1,9 +1,9 @@
 const express = require('express');
+const http = require('http');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
-const http = require('http');
 const ejs = require('ejs');
 const index = require('./routes/index');
 const tongqu = require('./routes/tongqu');
@@ -28,7 +28,7 @@ app.use('/', index);
 app.use('/tongqu', tongqu);
 app.use('/contact', contact);
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', 3000);
 app.set('host', '127.0.0.1');
 const server = http.createServer(app).listen(app.get('port'), app.get('host'), function() {
     console.log(`Qingniao website server listening on port ${app.get('port')}　at host ${app.get('host')}`);
